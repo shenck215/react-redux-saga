@@ -163,13 +163,13 @@ module.exports = (__webpack_require__(0))(0);
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(602);
+module.exports = (__webpack_require__(0))(610);
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(603);
+module.exports = (__webpack_require__(0))(611);
 
 /***/ }),
 /* 4 */
@@ -181,9 +181,9 @@ module.exports = (__webpack_require__(0))(603);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var GET_ROUTER_MENU_SAGA = exports.GET_ROUTER_MENU_SAGA = 'GET_ROUTERMENU';
-var RECEIVED_ROUTER_MENU_DATA = exports.RECEIVED_ROUTER_MENU_DATA = 'RECEIVED_ROUTER_MENU_DATA';
-var ROUTER_MENU_ISFINISHED = exports.ROUTER_MENU_ISFINISHED = 'ROUTER_MENU_ISFINISHED';
+var GET_ROUTER_MENU_SAGA = exports.GET_ROUTER_MENU_SAGA = 'GET_ROUTERMENU'; //获取路由及导航栏等信息
+var RECEIVED_ROUTER_MENU_DATA = exports.RECEIVED_ROUTER_MENU_DATA = 'RECEIVED_ROUTER_MENU_DATA'; //取得路由及导航栏等信息
+var ROUTER_MENU_ISFINISHED = exports.ROUTER_MENU_ISFINISHED = 'ROUTER_MENU_ISFINISHED'; //数据获取是否完成
 
 var getRouterMenu = exports.getRouterMenu = function getRouterMenu(params) {
 
@@ -211,7 +211,7 @@ var isFinished = exports.isFinished = function isFinished(params) {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(122);
+module.exports = (__webpack_require__(0))(123);
 
 /***/ }),
 /* 6 */
@@ -302,7 +302,7 @@ exports.routerMiddleware = _middleware2['default'];
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(605);
+module.exports = (__webpack_require__(0))(613);
 
 /***/ }),
 /* 8 */
@@ -445,7 +445,7 @@ function routerReducer() {
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(599);
+module.exports = (__webpack_require__(0))(606);
 
 /***/ }),
 /* 13 */
@@ -538,17 +538,6 @@ var RouterIndexApp = function (_Component) {
         _classCallCheck(this, RouterIndexApp);
 
         return _possibleConstructorReturn(this, (RouterIndexApp.__proto__ || Object.getPrototypeOf(RouterIndexApp)).call(this, props));
-        // this.state = {
-        //     user: {
-        //         userInfo: {
-        //             user_name: ''
-        //         }
-        //     },
-        //     menu: [],
-        //     routers: [],
-        //     isFinished: false,
-        //     breadCrumb: {},
-        // }
     }
 
     _createClass(RouterIndexApp, [{
@@ -558,20 +547,6 @@ var RouterIndexApp = function (_Component) {
 
 
             dispatch((0, _routerMenuAction.getRouterMenu)({}));
-
-            // /**
-            //  * 获取用户信息，导航菜单，路由，加载状态
-            //  */
-            // renderRouteMune().then( data => {
-
-            //     this.setState({
-            //         user: data.user,
-            //         menu: data.menu,
-            //         routers: data.routerArr,
-            //         breadCrumb: data.breadCrumb,
-            //         isFinished: true,
-            //     })
-            // });
         }
     }, {
         key: 'getChildContext',
@@ -1792,25 +1767,25 @@ function syncHistoryWithStore(history, store) {
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(1340);
+module.exports = (__webpack_require__(0))(1361);
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(600);
+module.exports = (__webpack_require__(0))(608);
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(604);
+module.exports = (__webpack_require__(0))(612);
 
 /***/ }),
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(681);
+module.exports = (__webpack_require__(0))(689);
 
 /***/ }),
 /* 43 */

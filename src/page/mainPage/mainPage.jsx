@@ -1,4 +1,7 @@
 import React from 'react';
+//import * as QueueAnim from 'rc-queue-anim/lib/';
+// <QueueAnim type="bottom" delay="300">
+// </QueueAnim>
 import mainPageStyle from '../../css/mainPage/mainPage.css';
 import {
 	Layout,
@@ -167,6 +170,7 @@ class MainPageApp extends React.Component {
 							</Menu>
 						</div>
 					</Header>
+		
 					<Content style={{ margin: "12px 16px 24px" }}>
 						<Breadcrumb style={{ margin: '12px 0' }}>
 							{breadCrumbItem}
@@ -175,6 +179,7 @@ class MainPageApp extends React.Component {
 							{children}
 						</div>
 					</Content>
+
 					<Footer style={{ textAlign: 'center' }}>Copyright &copy; 2017 - 2018杭州今元标矩科技有限公司 版权归今元集团所有</Footer>
 				</Layout>
 			</Layout>
