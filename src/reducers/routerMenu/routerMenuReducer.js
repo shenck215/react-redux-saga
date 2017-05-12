@@ -87,7 +87,7 @@ let dataProcess = (data) => {
 					for(let k = 0;k < data.userRole[i].children[j].children.length; k++) {
 
 						data.userRole[i].children[j].children[k].url? 
-							data.userRole[i].children[j].children[k].url = (data.userRole[i].children[j].children[k].url).replace(/\/jsp/,'/wyb') 
+							data.userRole[i].children[j].children[k].url = (data.userRole[i].children[j].children[k].url).replace(/\/jsp/,'/jsp/react') 
 						: 
 							data.userRole[i].children[j].children[k].url;
 
@@ -143,7 +143,7 @@ let dataProcess = (data) => {
 					item3 = [];
 				}else {
 					data.userRole[i].children[j].url? 
-						data.userRole[i].children[j].url = (data.userRole[i].children[j].url).replace(/\/jsp/,'/wyb') 
+						data.userRole[i].children[j].url = (data.userRole[i].children[j].url).replace(/\/jsp/,'/jsp/react') 
 					: 
 						data.userRole[i].children[j].url;
 					// 组合二级导航节点并插入相应的一级导航

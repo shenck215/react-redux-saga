@@ -3,6 +3,7 @@ import {
     Router,
     Route,
     IndexRoute,
+    Redirect,
 } from 'react-router';
 import { connect } from 'react-redux';
 import {
@@ -102,11 +103,11 @@ class RouterIndexApp extends Component {
 		return (
 			isFinished === true ?
                 <Router history={history}>
-                    <Route path="/" getComponent={lazyLoadComponent(MainPageApp)} >
+                    <Route path="/jsp/react" getComponent={lazyLoadComponent(MainPageApp)} >
                         <IndexRoute getComponent={lazyLoadComponent(WelcomeApp)} />
                         {routers}
-                        <Route getComponent={lazyLoadComponent(NotFoundPageApp)} />
                     </Route>
+                    <Route path="/*" getComponent={lazyLoadComponent(NotFoundPageApp)} />
                 </Router>
 			:
                 (<div style={ {width: 100, height: 100,  position: 'fixed', left:'50%', margin: '-25px 0 0 -25px',top: '50%'}}>

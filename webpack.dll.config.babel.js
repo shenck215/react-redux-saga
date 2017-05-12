@@ -23,7 +23,6 @@ const vendors = [
     'react-redux',
     'babel-polyfill',
     'redux-saga',
-    'rc-queue-anim',
 ];
 
 export default {

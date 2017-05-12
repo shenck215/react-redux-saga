@@ -1,15 +1,17 @@
 
 
-var env = 'dev'; //dev是本地开发环境，test是测试环境，beta是公测环境，product是正式环境
+var config;
 
-var config = {
-	env: env
-};
-
-
-if( env === 'dev' ){
-	config.appDomain = ''; 
+if(__DEV__) {
+	config = '';
+}else if(__TEST__) {
+	config = 'https://oxt.joyomm.com/joyowyb';
+}else if(__BETA__) {
+	config = 'https://tigert.joyomm.com/joyowyb';
+}else if(__BUILD__) {
+	config = 'http://adminwyb.joyowo.com';
 }
+
 
 module.exports = config;
 

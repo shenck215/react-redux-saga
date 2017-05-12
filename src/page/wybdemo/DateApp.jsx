@@ -1,11 +1,9 @@
-import React,{
+import React, {
     Component,
 } from 'react';
 import {
     DatePicker,
 } from 'antd';
-
-
 /*eslint-disable */
 
 const {
@@ -21,11 +19,11 @@ class DateApp extends Component {
 
     render() {
         return (
-            <div style={{marginTop: 20}}>
+            <div style={{ marginTop: 20 }}>
                 <DatePicker placeholder="select day" />
-                <br/><br/>
+                <br /><br />
                 <MonthPicker placeholder="select month" />
-                <br/><br/>
+                <br /><br />
                 <RangePicker placeholder={['start time', 'end time']} />
             </div>
         );

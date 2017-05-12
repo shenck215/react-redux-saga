@@ -1,4 +1,4 @@
-import React,{
+import React, {
     Component,
 } from 'react';
 import {
@@ -8,6 +8,8 @@ import {
     Switch,
     Radio,
 } from 'antd';
+
+
 import {
     fetchFn,
 } from '../../api/fetch';
@@ -25,20 +27,20 @@ const columns = [
         key: 'name',
         width: 150,
         render: text => <a href="#">{text}</a>,
-    },{
+    }, {
         title: 'Age',
         dataIndex: 'age',
         key: 'age',
         width: 70,
-    },{
+    }, {
         title: 'Address',
         dataIndex: 'address',
         key: 'address'
-    },{
+    }, {
         title: 'Action',
         key: 'action',
         width: 360,
-        render: (text,record) => (
+        render: (text, record) => (
             <span>
                 <a href="#">Action - {record.name}</a>
                 <span className="ant-divider"></span>
@@ -54,7 +56,7 @@ const columns = [
 
 const data = [];
 
-for(let i = 1;i <= 10;i++) {
+for (let i = 1; i <= 10; i++) {
     data.push({
         key: i,
         name: `Shenck${i}号`,
@@ -76,8 +78,6 @@ class TableApp extends Component {
 
     constructor(props) {
         super(props);
-
-        
     }
 
     componentWillMount() {
@@ -107,7 +107,7 @@ class TableApp extends Component {
     handleToggle = (value) => {
         return (enable) => {
             this.setState({
-                [value]: enable 
+                [value]: enable
             });
         };
     }
@@ -179,6 +179,7 @@ class TableApp extends Component {
 
     render() {
         return (
+
             <div>
                 <Form layout="inline">
                     <FormItem label="bordered">
@@ -224,6 +225,7 @@ class TableApp extends Component {
                 </Form>
                 <Table {...this.state} columns={columns} dataSource={data} />
             </div>
+
         );
     }
 }

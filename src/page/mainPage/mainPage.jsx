@@ -1,7 +1,5 @@
 import React from 'react';
-//import * as QueueAnim from 'rc-queue-anim/lib/';
-// <QueueAnim type="bottom" delay="300">
-// </QueueAnim>
+
 import mainPageStyle from '../../css/mainPage/mainPage.css';
 import {
 	Layout,
@@ -79,7 +77,7 @@ class MainPageApp extends React.Component {
 	 * 根据openKeys获取面包屑关系
 	 */
 	proBreadCrumbItem = (openKeys) => {
-
+		
 		let breadCrumbItem = [];
 		const breadCrumb = this.state.breadCrumb;
 		const nowOpenKeys = openKeys? openKeys: sessionStorage.openKeys;

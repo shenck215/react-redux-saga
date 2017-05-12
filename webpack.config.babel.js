@@ -16,133 +16,151 @@ const extractCSS = new ExtractTextPlugin({
 const entries = path.resolve(__dirname, './src/index.jsx');
 const entriesKey = Object.keys(entries);
 
-const myWebpackConfig = {
-    entry: entries,
-    output: {
-        path: path.resolve(__dirname),
-        filename: 'static/js/[name].js',
-        publicPath: 'http://127.0.0.1:2333/',
-        //加这个！
-        chunkFilename: 'static/js/[name].js',
-    },
-    resolve: {
-        extensions: [
-            '.js',
-            '.jsx',
-            '.ts',
-            '.tsx',
-            '.css',
-            '.less',
-            '.json',
-            '.gif',
-            '.html',
-            '.png',
-            '.webp',
-            '.jpg',
-        ],
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js|jsx?$/,
-                exclude: /node_modules|src(\\|\/)page((\\|\/).*).(jsx|js)/,
-                loader: 'babel-loader',
-            },
-            {
-                test: /src(\\|\/)page((\\|\/).*).(jsx|js)/,
-                use: [
-                    'bundle-loader?lazy',
-                    'babel-loader',
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: extractCSS.extract({
-                    fallback: "style-loader",
-                    use: [
-                        'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
-                        'postcss-loader',
-                    ]
-                }),
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader',
-                ],
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader',
-            },
-            {
-                test: /\.(jpg|png|gif|jpeg)?$/,
-                loader: 'url-loader?limit=20480&name=static/images/[name].[hash:8].[ext]',
-            },
-            {
-                test: /\.(eot|woff(2)?|ttf|svg)?(@.+)*$/,
-                loader: 'url-loader?limit=20480&name=static/other/[name].[hash:8].[ext]',
-            }
-        ]
-    },
-    devtool: 'cheap-module-source-map',
-    devServer: {
-        port: 2333,
-        compress: true, /* gizp */
-        publicPath: '/',
-        quiet: false,
-        stats: { colors: true },
-        inline: true,
-        historyApiFallback: true,
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: true,
-        },
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
-    },
-    plugins: [
-        extractCSS,
-        // new HtmlWebpackPlugin({
-        //     title: 'My App',
-        //     inject: true,
-        //     template: path.resolve(__dirname,'./index.html'),
-        // }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': '"production"'
-            }
-        }),
+const myWebpackConfig = (env) => {
 
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: function () {
-                    return [precss, autoprefixer];
+    let publicPath;
+
+    if(env === 'dev') {
+        publicPath = 'http://127.0.0.1:2333/';
+    }else if(env === 'dev') {
+        publicPath = 'http://127.0.0.1:2333/';
+    }else if(env === 'dev') {
+        publicPath = 'http://127.0.0.1:2333/';
+    }else if(env === 'dev') {
+        publicPath = 'http://127.0.0.1:2333/';
+    }
+
+    return {
+        entry: entries,
+        output: {
+            path: path.resolve(__dirname),
+            filename: 'static/js/[name].js',
+            publicPath: 'http://127.0.0.1:2333/',
+            //加这个！
+            chunkFilename: 'static/js/[name].js',
+        },
+        resolve: {
+            extensions: [
+                '.js',
+                '.jsx',
+                '.ts',
+                '.tsx',
+                '.css',
+                '.less',
+                '.json',
+                '.gif',
+                '.html',
+                '.png',
+                '.webp',
+                '.jpg',
+            ],
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.js|jsx?$/,
+                    exclude: /node_modules|src(\\|\/)page((\\|\/).*).(jsx|js)/,
+                    loader: 'babel-loader',
                 },
-            }
-        }),
-        /**
-         * DllReferencePlugin
-         */
-        new DllReferencePlugin({
-            context: __dirname,
-            manifest,
-        }),
+                {
+                    test: /src(\\|\/)page((\\|\/).*).(jsx|js)/,
+                    use: [
+                        'bundle-loader?lazy',
+                        'babel-loader',
+                    ]
+                },
+                {
+                    test: /\.css$/,
+                    use: extractCSS.extract({
+                        fallback: "style-loader",
+                        use: [
+                            'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
+                            'postcss-loader',
+                        ]
+                    }),
+                },
+                {
+                    test: /\.less$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'less-loader',
+                    ],
+                },
+                {
+                    test: /\.json$/,
+                    loader: 'json-loader',
+                },
+                {
+                    test: /\.(jpg|png|gif|jpeg)?$/,
+                    loader: 'url-loader?limit=20480&name=static/images/[name].[hash:8].[ext]',
+                },
+                {
+                    test: /\.(eot|woff(2)?|ttf|svg)?(@.+)*$/,
+                    loader: 'url-loader?limit=20480&name=static/other/[name].[hash:8].[ext]',
+                }
+            ]
+        },
+        devtool: 'cheap-module-source-map',
+        devServer: {
+            port: 2333,
+            compress: true, /* gizp */
+            publicPath: '/',
+            quiet: false,
+            stats: { colors: true },
+            inline: true,
+            historyApiFallback: true,
+            watchOptions: {
+                aggregateTimeout: 300,
+                poll: true,
+            },
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
+        },
+        plugins: [
+            extractCSS,
+            // new HtmlWebpackPlugin({
+            //     title: 'My App',
+            //     inject: true,
+            //     template: path.resolve(__dirname,'./index.html'),
+            // }),
+            new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': '"production"'
+                },
+                '__DEV__': env === 'dev' ? true : false,
+                '__TEST__': env === 'dev' ? true : false,
+                '__BETA__': env === 'beta' ? true : false,
+                '__BUILD__': env === 'build' ? true : false,
+            }),
 
-        /**
-         * CommonsChunkPlugin
-         */
-        new CommonsChunkPlugin({
-            name: 'common',
-            filename: `static/common.js`,
-            minChunks: 2,
-            chunks: entriesKey,
-        }),
-    ]
+            new webpack.LoaderOptionsPlugin({
+                options: {
+                    postcss: function () {
+                        return [precss, autoprefixer];
+                    },
+                }
+            }),
+            /**
+             * DllReferencePlugin
+             */
+            new DllReferencePlugin({
+                context: __dirname,
+                manifest,
+            }),
 
-};
+            /**
+             * CommonsChunkPlugin
+             */
+            new CommonsChunkPlugin({
+                name: 'common',
+                filename: `static/common.js`,
+                minChunks: 2,
+                chunks: entriesKey,
+            }),
+        ]
+    };
+}
 
 module.exports = myWebpackConfig;

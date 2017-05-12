@@ -10,6 +10,7 @@
     "immutable": "^3.8.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
+    "rc-tween-one": "^1.2.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -44,7 +45,7 @@
     "json-loader": "0.5.4",
     "postcss-loader": "1.2.2",
     "precss": "^1.4.0",
-    "rc-queue-anim": "^1.0.1",
+    "rc-queue-anim": "^0.13.0",
     "react-dev-utils": "^0.5.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
@@ -54,8 +55,10 @@
     "whatwg-fetch": "2.0.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.babel.js --progress --colors",
-    "build": "webpack --config webpack.config.babel.js --progress --colors",
+    "dev": "webpack-dev-server --env dev --config webpack.config.babel.js --progress --colors",
+    "test": "webpack --env test --config webpack.config.babel.js --progress --colors",
+    "beta": "webpack --env beta --config webpack.config.babel.js --progress --colors",
+    "build": "webpack --env build --config webpack.config.babel.js --progress --colors",
     "dll": "webpack --config webpack.dll.config.babel.js --progress --colors"
   }
 }

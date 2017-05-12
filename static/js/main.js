@@ -939,7 +939,7 @@ var _config2 = _interopRequireDefault(_config);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var apiConfig = {
-    initApi: _config2.default.appDomain + '/user/info'
+    initApi: _config2.default.appDomain + '/api/info'
 };
 
 exports.default = apiConfig;

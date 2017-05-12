@@ -1,7 +1,7 @@
 import config from '../config/config';
 
 let apiConfig = {
-    initApi: config.appDomain + '/user/info',
+    initApi: config + '/api/info',
 }
 
 export default apiConfig;
