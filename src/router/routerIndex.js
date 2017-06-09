@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import {
     Spin,
 } from 'antd';
+import globalConfig from '../config/config';
 import {
     getRouterMenu,
 } from'../action/routerMenu/routerMenuAction';
@@ -16,6 +17,8 @@ import {
 import MainPageApp from '../page/mainPage/mainPage';
 import WelcomeApp from '../page/welcome/welcome';
 import NotFoundPageApp from '../page/404/notFundPage';
+
+const ROOT_PATH = globalConfig.ROOT_PATH;
 /* eslint-disable */
 /**
  * 懒加载
@@ -89,21 +92,18 @@ class RouterIndexApp extends Component {
         /**
          * 生成Route
         */
-        
         if(isFinished) {
             for(let item of routerArr) {
                 routers.push(
                     <Route path={item.path} getComponent={lazyLoadComponent(item.component)} />
                 );
             }
-        }
-        
-            
+        }  
 
 		return (
 			isFinished === true ?
                 <Router history={history}>
-                    <Route path="/jsp/react" getComponent={lazyLoadComponent(MainPageApp)} >
+                    <Route path={`${ROOT_PATH}/jsp/react`} getComponent={lazyLoadComponent(MainPageApp)} >
                         <IndexRoute getComponent={lazyLoadComponent(WelcomeApp)} />
                         {routers}
                     </Route>

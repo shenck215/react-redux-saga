@@ -1,0 +1,104 @@
+[{
+    "area": "A-G",
+    "list": [{
+        "name": "浙江",
+        "value": 1,
+        "children": [{
+            "area": "A-D",
+            "list": [{
+                "name": "杭州",
+                "value": 12,
+                "children": [{
+                    "area": "",
+                    "list": [{
+                        "name": "江干区",
+                        "value": 333
+                    }, {
+                        "name": "上城区",
+                        "value": 334
+                    }]
+                }]
+            }, {
+                "name": "宁波",
+                "value": 13,
+                "children": [{
+                    "area": "",
+                    "list": [{
+                        "name": "奉化区",
+                        "value": 335
+                    }]
+                }]
+            }]
+        }]
+    }, {
+        "name": "浙江",
+        "value": 2,
+        "children": [{
+            "area": "A-D",
+            "list": [{
+                "name": "杭州",
+                "value": 12,
+                "children": [{
+                    "area": "",
+                    "list": [{
+                        "name": "江干区",
+                        "value": 333
+                    }, {
+                        "name": "上城区",
+                        "value": 334
+                    }]
+                }]
+            }, {
+                "name": "宁波",
+                "value": 13,
+                "children": [{
+                    "area": "",
+                    "list": [{
+                        "name": "奉化区",
+                        "value": 335
+                    }]
+                }]
+            }]
+        }]
+    }]
+}, {
+    "area": "E-H",
+    "list": [{
+        "name": "安徽",
+        "value": 3,
+        "children": [{
+            "area": "A-D",
+            "list": [{
+                "name": "安庆",
+                "value": 14,
+                "children": [{
+                    "area": "",
+                    "list": [{
+                        "name": "迎江区",
+                        "value": 398
+                    }, {
+                        "name": "大观区",
+                        "value": 399
+                    }]
+                }]
+            }, {
+                "name": "蚌埠",
+                "value": 15,
+                "children": [{
+                    "area": "",
+                    "list": [{
+                        "name": "中市区",
+                        "value": 409,
+                        "children": [{
+                            "area": "",
+                            "list": [{
+                                "name": "凯旋街道",
+                                "value": 4091
+                            }]
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }]
+}]

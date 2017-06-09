@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import entryStores from './store/createStore';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import 'antd/dist/antd.css';
 
 const history = syncHistoryWithStore(browserHistory, entryStores, {
     selectLocationState(state) {

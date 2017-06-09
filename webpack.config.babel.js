@@ -22,11 +22,11 @@ const myWebpackConfig = (env) => {
 
     if(env === 'dev') {
         publicPath = 'http://127.0.0.1:2333/';
-    }else if(env === 'dev') {
+    }else if(env === 'alpha') {
+        publicPath = 'https://testnewwyb.joyomm.com/';
+    }else if(env === 'beta') {
         publicPath = 'http://127.0.0.1:2333/';
-    }else if(env === 'dev') {
-        publicPath = 'http://127.0.0.1:2333/';
-    }else if(env === 'dev') {
+    }else if(env === 'build') {
         publicPath = 'http://127.0.0.1:2333/';
     }
 
@@ -35,7 +35,7 @@ const myWebpackConfig = (env) => {
         output: {
             path: path.resolve(__dirname),
             filename: 'static/js/[name].js',
-            publicPath: 'http://127.0.0.1:2333/',
+            publicPath: publicPath,
             //加这个！
             chunkFilename: 'static/js/[name].js',
         },
@@ -59,11 +59,11 @@ const myWebpackConfig = (env) => {
             rules: [
                 {
                     test: /\.js|jsx?$/,
-                    exclude: /node_modules|src(\\|\/)page((\\|\/).*).(jsx|js)/,
+                    exclude: /node_modules|src(\\|\/)page((\\|\/).*).jsx$/,
                     loader: 'babel-loader',
                 },
                 {
-                    test: /src(\\|\/)page((\\|\/).*).(jsx|js)/,
+                    test: /src(\\|\/)page((\\|\/).*).jsx$/,
                     use: [
                         'bundle-loader?lazy',
                         'babel-loader',
@@ -76,7 +76,11 @@ const myWebpackConfig = (env) => {
                         use: [
                             'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
                             'postcss-loader',
-                        ]
+                        ],
+                        // options:{
+                        //     minimize: true //css压缩
+                        // }
+
                     }),
                 },
                 {
@@ -107,6 +111,7 @@ const myWebpackConfig = (env) => {
             compress: true, /* gizp */
             publicPath: '/',
             quiet: false,
+            // host: '172.16.14.36',
             stats: { colors: true },
             inline: true,
             historyApiFallback: true,
@@ -130,7 +135,7 @@ const myWebpackConfig = (env) => {
                     'NODE_ENV': '"production"'
                 },
                 '__DEV__': env === 'dev' ? true : false,
-                '__TEST__': env === 'dev' ? true : false,
+                '__ALPHA__': env === 'alpha' ? true : false,
                 '__BETA__': env === 'beta' ? true : false,
                 '__BUILD__': env === 'build' ? true : false,
             }),
@@ -159,6 +164,36 @@ const myWebpackConfig = (env) => {
                 minChunks: 2,
                 chunks: entriesKey,
             }),
+
+            // new webpack.optimize.UglifyJsPlugin({
+            //     minimize: true,
+            //     compress: {
+            //         screw_ie8: false,
+            //         warnings: false /* 不显示js规范的警告、提示 */
+            //     },
+            //     mangle: { screw_ie8: false },
+            //     output: { screw_ie8: false },
+            //     //  Preserve copyright comments in the output. By
+            //     // default this works like Google Closure, keeping
+            //     // JSDoc-style comments that contain "@license" or
+            //     // "@preserve". You can optionally pass one of the
+            //     // following arguments to this flag:
+            //     // - "all" to keep all comments
+            //     // - a valid JS regexp (needs to start with a
+            //     // slash) to keep only comments that match.
+            //     // Note that currently not *all* comments can be
+            //     // kept when compression is on, because of dead
+            //     // code removal or cascading statements into
+            //     // sequences.
+
+            //     /**
+            //      * 上面的介绍是指，这个comments的选项是保留一些类似 "@license" or "@preserve" 这种版权的注释，
+            //      * 可选参数有2种， 一种是 字符串 'all'，保留所有注释。
+            //      * 另一种是 可以是正则表达式
+            //      * 这里我去掉了所有注释使用了 空字符串 '';
+            //      */
+            //     comments: ''
+            // }),
         ]
     };
 }

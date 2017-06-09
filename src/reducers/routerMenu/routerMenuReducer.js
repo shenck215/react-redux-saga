@@ -3,10 +3,11 @@ import {
 	ROUTER_MENU_ISFINISHED,
 } from '../../action/routerMenu/routerMenuAction';
 import {
-    Breadcrumb,
+    //Breadcrumb,
     Menu,
     Icon,
 } from 'antd';
+import globalConfig from '../../config/config';
 import {
     Link,
 } from 'react-router';
@@ -15,10 +16,14 @@ import React from 'react';
 import {
     routerMenuApi,
 } from '../../api/routerMenu/routerMenuApi';
-import componentApp from '../../component/component';
+import {
+	componentApp,
+	detailsPage,
+} from '../../component/component';
 
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
+const ROOT_PATH = globalConfig.ROOT_PATH;
 
 const initialState = Immutable.fromJS({
     user: {
@@ -32,7 +37,7 @@ const initialState = Immutable.fromJS({
     collapsed: false,
     mode: 'inline',
     openKeys: [],
-    breadCrumbItem: {},
+    //breadCrumbItem: {},
 });
 
 /**
@@ -51,11 +56,16 @@ let component = (code) => {
  * @param {*} arr 
  */
 let componentForRoute = (routerArr,arr) => {
-    for(let i in routerArr) {
-        let key = Object.keys(routerArr[i])[1];
-        routerArr[i].component = arr[key];
-        delete routerArr[i][key];
+	
+	let allRouter = routerArr.concat(detailsPage);
+	
+    for(let i in allRouter) {
+        let key = Object.keys(allRouter[i])[1];
+		arr[key]? allRouter[i].component = arr[key] : allRouter[i].component = arr['DemoApp'];
+        delete allRouter[i][key];
     }
+
+	return allRouter;
 }
 
 /**
@@ -68,7 +78,7 @@ let dataProcess = (data) => {
 
 	let routerArr = [];//路由
 
-	let breadCrumb = {};//面包屑
+	//let breadCrumb = {};//面包屑
 
 	// 渲染左侧导航及添加路由
 	// 一级导航栏
@@ -87,7 +97,7 @@ let dataProcess = (data) => {
 					for(let k = 0;k < data.userRole[i].children[j].children.length; k++) {
 
 						data.userRole[i].children[j].children[k].url? 
-							data.userRole[i].children[j].children[k].url = (data.userRole[i].children[j].children[k].url).replace(/\/jsp/,'/jsp/react') 
+							data.userRole[i].children[j].children[k].url = (data.userRole[i].children[j].children[k].url).replace(/\/jsp/,`${ROOT_PATH}/jsp/react`) 
 						: 
 							data.userRole[i].children[j].children[k].url;
 
@@ -96,7 +106,7 @@ let dataProcess = (data) => {
 							<MenuItem key={data.userRole[i].children[j].children[k].code}>
 								{
 									i === data.userRole.length - 1? 
-										<Link to={data.userRole[i].children[j].children[k].url}>
+										<Link to={data.userRole[i].children[j].children[k].url} onClick={()=>{document.documentElement.scrollTop = 0;}}>
 											{data.userRole[i].children[j].children[k].displayName}
 										</Link>
 									: 
@@ -123,7 +133,7 @@ let dataProcess = (data) => {
 							/**
 							 * 面包屑缓存
 							 */
-							breadCrumb[`${data.userRole[i].code},${data.userRole[i].children[j].code},${data.userRole[i].children[j].children[k].code}`] = [data.userRole[i].displayName,data.userRole[i].children[j].displayName,data.userRole[i].children[j].children[k].displayName];
+							// breadCrumb[`${data.userRole[i].code},${data.userRole[i].children[j].code},${data.userRole[i].children[j].children[k].code}`] = [data.userRole[i].displayName,data.userRole[i].children[j].displayName,data.userRole[i].children[j].children[k].displayName];
 
 						}
 
@@ -143,7 +153,7 @@ let dataProcess = (data) => {
 					item3 = [];
 				}else {
 					data.userRole[i].children[j].url? 
-						data.userRole[i].children[j].url = (data.userRole[i].children[j].url).replace(/\/jsp/,'/jsp/react') 
+						data.userRole[i].children[j].url = (data.userRole[i].children[j].url).replace(/\/jsp/,`${ROOT_PATH}/jsp/react`) 
 					: 
 						data.userRole[i].children[j].url;
 					// 组合二级导航节点并插入相应的一级导航
@@ -151,7 +161,7 @@ let dataProcess = (data) => {
 						<MenuItem key={data.userRole[i].children[j].code}>
 							{
 								i === data.userRole.length - 1?
-									<Link to={data.userRole[i].children[j].url}>
+									<Link to={data.userRole[i].children[j].url} onClick={()=>{document.documentElement.scrollTop = 0;}}>
 										{data.userRole[i].children[j].displayName}
 									</Link>
 								:
@@ -177,7 +187,7 @@ let dataProcess = (data) => {
 						/**
 						 * 面包屑缓存
 						 */
-						breadCrumb[`${data.userRole[i].code},${data.userRole[i].children[j].code}`] = [data.userRole[i].displayName,data.userRole[i].children[j].displayName];
+						//breadCrumb[`${data.userRole[i].code},${data.userRole[i].children[j].code}`] = [data.userRole[i].displayName,data.userRole[i].children[j].displayName];
 					}
 				}
 				
@@ -200,21 +210,19 @@ let dataProcess = (data) => {
 		menu.push(submenu);
 
 	}
-
-	
 	/**
 	 * 将路由与组件一一对应
+	 * componentForRoute(routerArr,componentApp);
 	 */
-	componentForRoute(routerArr,componentApp);
 
 	let renderRouteMune = {
 		user,
 		menu,
-		routerArr,
-		breadCrumb,
+		routerArr : componentForRoute(routerArr,componentApp),
+		//breadCrumb,
 		isFinished: true,
 	}
-
+	
 	return renderRouteMune;
 }
 
@@ -230,9 +238,10 @@ export const routerMenu = (state = initialState, action) => {
 				return data.menu;
 			}).updateIn(['routerArr'], () => {
 				return data.routerArr;
-			}).updateIn(['breadCrumb'], () => {
-				return data.breadCrumb;
-			});
+			})
+			// .updateIn(['breadCrumb'], () => {
+			// 	return data.breadCrumb;
+			// });
 
 		case ROUTER_MENU_ISFINISHED:
 

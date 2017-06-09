@@ -1,0 +1,19 @@
+:global(.ant-tabs-bar) {
+	border-color: #22baa0;
+}
+
+:global(.ant-tabs-nav) div:first-child + div{
+	background: #fff !important;
+	border: 0 !important;
+	color: #333;
+	font-size: 15px;
+}
+
+
+:global(.ant-tabs):global(.ant-tabs-card) > :global(.ant-tabs-bar) :global(.ant-tabs-tab-active){
+	border-color: #22baa0;
+}
+
+:global(.ant-tabs):not(.ant-tabs-vertical) > :global(.ant-tabs-content){
+	min-height: 600px;
+}

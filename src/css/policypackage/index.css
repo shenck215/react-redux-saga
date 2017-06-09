@@ -1,0 +1,37 @@
+.title{
+    border-bottom: 2px solid #22baa0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.title span{
+    font-size: 18px;
+    color: #f60;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+
+
+.steps {
+    background: #EAEDF2;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 2px;
+}
+.steps :global(.ant-steps-step) :global(.ant-steps-head)  {
+    background: #EAEDF2;
+}
+.steps :global(.ant-steps-step) :global(.ant-steps-title)  {
+    background: #EAEDF2;
+}
+
+:global(.ant-steps) :global(.ant-steps-item):global(.ant-steps-status-process) :global(.ant-steps-tail) > i{
+    background-color: #22baa0;
+}
+
+:global(.ant-steps) :global(.ant-steps-item):global(.ant-steps-status-wait) :global(.ant-steps-tail) > i{
+    background-color: #CFE5F0;
+}

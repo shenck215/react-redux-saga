@@ -1,0 +1,48 @@
+.title{
+    border-bottom: solid 2px #22baa0;
+}
+
+.title h2{
+    float: left;
+}
+
+.title span {
+    float: right;
+}
+.title .clear{
+    clear: both;
+}
+
+/*筛选项样式*/
+.filter{
+    display: flex;
+    margin: 20px 0px;
+}
+
+.filter .companyNameFilter{
+    flex: 4;
+}
+
+.filter .zoneFilter{
+    margin-left: 10px;
+    flex: 2;
+}
+
+.filter .cityCountFilter{
+    margin: 0px 10px;
+    flex: 1;
+}
+
+.filter .timeFilter{
+    margin-left: 10px;
+    flex: 3;
+}
+
+/*表格样式*/
+.companyName{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 400px;
+    display: inline-block;
+}

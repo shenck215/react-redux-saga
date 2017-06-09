@@ -1,0 +1,13 @@
+.title{
+    padding-bottom: 10px;
+    border-bottom: solid 2px #22baa0;
+    margin-bottom: 20px;
+}
+
+.companyForm{
+    margin-top: 20px;
+}
+
+.saveBtn{
+    width: 160px;
+}

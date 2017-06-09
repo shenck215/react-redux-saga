@@ -8,5 +8,5 @@ import apiConfig from '../fetchIndex';
 // get user info
 //apiConfig.initApi
 export const routerMenuApi = (data) => {
-    return fetchFn(apiConfig.initApi,data,{method: 'get'}).then(data => data);
+    return fetchFn(apiConfig.initApi,data,{method: 'get',body: {}}).then(data => data);
 }

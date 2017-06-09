@@ -1,0 +1,53 @@
+.title{
+    padding-bottom: 10px;
+    border-bottom: solid 2px #22baa0;
+    margin-bottom: 20px;
+}
+
+.title .left{
+    float: left;
+}
+
+.title .right{
+    float: right;
+}
+
+.title .clear{
+    clear: both;
+}
+
+.title .desc{
+    font-weight: bold;
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.title .companyName{
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #ef6330;
+}
+
+/* 伪元素清浮动 */
+.baseInfo:after{
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.baseInfo h4{
+    float: left;
+}
+
+.baseInfo img{
+    width: 28px;
+    float: right;
+    cursor: pointer;
+}
+
+.form{
+    margin-top: 10px;
+    padding: 10px;
+}

@@ -1,0 +1,76 @@
+.postion-container {
+    position: absolute;
+    display: none;
+    border: 1px solid #22BAA0;
+    font-family: "Microsoft Yahei";
+    font-size: 14px;
+}
+.postion-container.show {
+    display: block;
+}
+.selectCity {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+.selectCity .city {
+    margin: 10px;
+}
+.tab-btns {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.tab-btns .tab-btn {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+}
+.tab-btns .tab-btn.tab-btn:hover,
+.tab-btns .tab-btn.active  {
+    background: -webkit-linear-gradient(bottom, #22BAA0 2px, transparent 0);
+    background: -moz-linear-gradient(bottom, #22BAA0 2px, transparent 0);
+    background: linear-gradient(bottom, #22BAA0 2px, transparent 0);
+}
+
+.citys-wrap {
+    overflow: hidden;
+    padding: 10px 15px;
+}
+.citys-wrap .area-item-group {
+    display: flex;
+    padding: 10px 15px;
+}
+.citys-wrap .city-item-group {
+    flex: 1;
+}
+.citys-wrap .city-item {
+    display: inline-block;
+    padding: 2px 4px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: all .15s;
+} 
+.citys-wrap .city-item:hover,
+.citys-wrap .city-item.active  {
+    display: inline-block;
+    background-color: #22BAA0;
+    color: #fff;
+}
+.citys-wrap .area-item {
+    display: inline-block;
+    padding: 2px;
+    width: 28px;
+    margin-right: 10px;
+    font-weight: 700;
+}
+

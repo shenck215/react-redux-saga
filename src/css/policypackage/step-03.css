@@ -1,0 +1,33 @@
+.title{
+    border-bottom: 2px solid #22baa0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.title span{
+    font-size: 18px;
+    color: #f60;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.btnGroup{
+    text-align: center;
+}
+.btnGroup button{
+    margin: 20px 5px 0;
+    height: 34px;
+}
+
+.addonAfterInputDiv{
+    width: 240px;
+}
+.addonAfterInputDiv :global(.btn_div){
+    position: relative;
+    top: -9px;
+}
+
+:global(.ant-popover-inner-content) div:first-child{
+    max-height: 28px;
+}

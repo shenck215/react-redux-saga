@@ -4,7 +4,7 @@ import mainPageStyle from '../../css/mainPage/mainPage.css';
 import {
 	Layout,
 	Menu,
-	Breadcrumb,
+	//Breadcrumb,
 	Icon
 } from 'antd';
 
@@ -34,7 +34,7 @@ class MainPageApp extends React.Component {
 			},
 			menu: [],
 			openKeys: sessionStorage.openKeys ? (sessionStorage.openKeys).split(',') : [],
-			breadCrumbItem: [<Breadcrumb.Item>无忧保首页</Breadcrumb.Item>],
+			//breadCrumbItem: [<Breadcrumb.Item>无忧保首页</Breadcrumb.Item>],
 		}
 	}
 
@@ -43,7 +43,7 @@ class MainPageApp extends React.Component {
 		this.setState({
 			user: this.context.user,
 			menu: this.context.menu,
-			breadCrumb: this.context.breadCrumb,
+			//breadCrumb: this.context.breadCrumb,
 		})
 
 
@@ -65,33 +65,33 @@ class MainPageApp extends React.Component {
 			openKeys: openKeys,
 		});
 
-		if (openKeys.length) {
+		// if (openKeys.length) {
 
-			this.proBreadCrumbItem(openKeys);
+		// 	this.proBreadCrumbItem(openKeys);
 
-		}
+		// }
 
 	}
 
 	/**
 	 * 根据openKeys获取面包屑关系
 	 */
-	proBreadCrumbItem = (openKeys) => {
+	// proBreadCrumbItem = (openKeys) => {
 		
-		let breadCrumbItem = [];
-		const breadCrumb = this.state.breadCrumb;
-		const nowOpenKeys = openKeys? openKeys: sessionStorage.openKeys;
-		const breadCrumbKey = nowOpenKeys.reverse().join(',');
-		if (breadCrumb[breadCrumbKey]) {
-			for (let item of breadCrumb[breadCrumbKey]) {
-				breadCrumbItem.push(<Breadcrumb.Item>{item}</Breadcrumb.Item>);
-			}
-			this.setState({
-				breadCrumbItem: breadCrumbItem
-			});
-			sessionStorage.setItem('breadCrumbKey',breadCrumbKey);
-		}
-	}
+	// 	let breadCrumbItem = [];
+	// 	const breadCrumb = this.state.breadCrumb;
+	// 	const nowOpenKeys = openKeys? openKeys: sessionStorage.openKeys;
+	// 	const breadCrumbKey = nowOpenKeys.reverse().join(',');
+	// 	if (breadCrumb[breadCrumbKey]) {
+	// 		for (let item of breadCrumb[breadCrumbKey]) {
+	// 			breadCrumbItem.push(<Breadcrumb.Item>{item}</Breadcrumb.Item>);
+	// 		}
+	// 		this.setState({
+	// 			breadCrumbItem: breadCrumbItem
+	// 		});
+	// 		sessionStorage.setItem('breadCrumbKey',breadCrumbKey);
+	// 	}
+	// }
 
 	menuOpenChange = (openKeys) => {
 
@@ -104,31 +104,32 @@ class MainPageApp extends React.Component {
 
 	}
 
-	render() {	
 
+	render() {	
+		
 		/**
 		 * 子组件
 		 */
 		const children = this.props.children;
 
-		let breadCrumbItem = [];
+		//let breadCrumbItem = [];
 		/**
 		 * 生成面包屑
 		 */
-		if(sessionStorage.breadCrumbKey) {
-			const breadCrumb = this.state.breadCrumb;
-			const breadCrumbKey = sessionStorage.breadCrumbKey;
-			if (breadCrumb[breadCrumbKey]) {
-				for (let item of breadCrumb[breadCrumbKey]) {
-					breadCrumbItem.push(<Breadcrumb.Item>{item}</Breadcrumb.Item>);
-				}
-			}
-		}else {
-			breadCrumbItem = this.state.breadCrumbItem;//初始化
-		}
+		// if(sessionStorage.breadCrumbKey) {
+		// 	const breadCrumb = this.state.breadCrumb;
+		// 	const breadCrumbKey = sessionStorage.breadCrumbKey;
+		// 	if (breadCrumb[breadCrumbKey]) {
+		// 		for (let item of breadCrumb[breadCrumbKey]) {
+		// 			breadCrumbItem.push(<Breadcrumb.Item>{item}</Breadcrumb.Item>);
+		// 		}
+		// 	}
+		// }else {
+		// 	breadCrumbItem = this.state.breadCrumbItem;//初始化
+		// }
 
 		return (
-			<Layout>
+			<Layout style={{height: '100%'}}>
 
 				<Sider
 					collapsible
@@ -137,7 +138,7 @@ class MainPageApp extends React.Component {
 				>
 
 					<div className="logo">金柚网</div>
-					<Menu theme="dark" onClick={this.menuClick} openKeys={this.state.openKeys} onOpenChange={this.menuOpenChange} mode={this.state.mode} defaultSelectedKeys={this.state.openKeys} style={{ "padding-bottom": '100px' }}>
+					<Menu theme="dark" onClick={this.menuClick} openKeys={this.state.openKeys} onOpenChange={this.menuOpenChange} mode={this.state.mode} defaultSelectedKeys={this.state.openKeys} style={{ "padding-bottom": '153px' }}>
 						{this.state.menu}
 					</Menu>
 
@@ -170,9 +171,11 @@ class MainPageApp extends React.Component {
 					</Header>
 		
 					<Content style={{ margin: "12px 16px 24px" }}>
-						<Breadcrumb style={{ margin: '12px 0' }}>
-							{breadCrumbItem}
-						</Breadcrumb>
+						{
+							// <Breadcrumb style={{ margin: '12px 0' }}>
+							// 	{breadCrumbItem}
+							// </Breadcrumb>
+						}
 						<div style={{ padding: 24, background: '#fff', minHeight: 738 }}>
 							{children}
 						</div>
@@ -188,7 +191,7 @@ class MainPageApp extends React.Component {
 MainPageApp.contextTypes = {
   	user: React.PropTypes.object,
     menu: React.PropTypes.array,
-    breadCrumb: React.PropTypes.object,
+    //breadCrumb: React.PropTypes.object,
 };
 
 export default MainPageApp;

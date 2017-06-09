@@ -1,0 +1,15 @@
+:global(.btn_div){
+    text-align: right;
+    display: inline-block;
+}
+:global(.btn_div) :global(.ok){
+    margin: 0 5px;
+    padding: 0 8px;
+}
+:global(.btn_div) :global(.cancel){
+    padding: 0 8px;
+}
+:global(.ant-popover-inner-content) :global(.ant-form-horizontal){
+    display: inline-block;
+    width: 150px;
+}

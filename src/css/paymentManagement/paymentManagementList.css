@@ -1,0 +1,83 @@
+.paymentManagementTitle{
+    border-bottom: 2px solid #22baa0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.paymentManagementTitle span{
+    font-size: 18px;
+    color: #22baa0;
+    font-weight: bold;
+}
+
+
+.paymentInsurerNames{
+    display: inline-block;
+    max-width: 600px;
+    word-wrap: break-word;
+}
+
+.cancelBtn{
+    cursor: pointer;
+    color: #108ee9;
+}
+
+.cancelBtnTitle{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.cancelModal {
+    overflow: hidden;
+}
+.cancelModal .left{
+    float: left;
+    padding-left: 10px;
+}
+.cancelModal .right{
+    float: left;
+    width: 80%;
+}
+.tipText{
+    padding: 10px 10px 0 10px;
+    color: red;
+}
+.cancelReason{
+    position: relative;
+}
+.cancelReason span{
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    color: #bbb;
+}
+
+.btnSearch {
+    margin-right: 10px;
+}
+
+.customFilterDropdown {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+}
+
+
+
+.resetBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+:global(.anticon-close) {
+    width: 32px;
+    line-height: 32px;
+    cursor: pointer;
+}
+:global(.anticon-close):hover {
+    background: #00AAEF;
+    color: #fff;
+}

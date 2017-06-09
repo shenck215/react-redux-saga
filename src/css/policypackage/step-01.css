@@ -1,0 +1,16 @@
+.form {
+    margin-top: 20px;
+}
+
+.form :global(.ant-select:only-child) {
+    display: inline-block;
+}
+
+.add {
+    color: #108ee9;
+}
+
+.table tr th, .table tr td {
+    padding: 8px;
+}
+

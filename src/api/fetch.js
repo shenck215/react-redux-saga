@@ -2,7 +2,9 @@ import 'whatwg-fetch';
 import {
     message,
 } from 'antd';
-
+import {
+    enCodeChar,
+} from './enCodeChar';
 
 /**
  * fetchFn 对window.fetch的封装，方面统一管理
@@ -11,16 +13,18 @@ import {
  * @param option {Object<JSON>} 额外的fetch可配置参数
  */
 export const fetchFn =  (url, data, option) => {
+    
     let json = {
         method: 'post',
         headers:{
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
-        body: data,
+        body: enCodeChar(data),
         credentials: 'include',
     };
     if(option) {
         Object.assign(json, option)
+        console.log(json)
     }
     return fetch(url, json).then(res => res.json()).then(data => {
         // if( Number(data.status) !== 0) {
@@ -33,7 +37,7 @@ export const fetchFn =  (url, data, option) => {
             case 'TypeError: Failed to fetch' :
                 msg = '请求失败';
                 break;
-            default: 
+            default:
                 msg = '请求失败'; 
         }
         message.error(msg);
