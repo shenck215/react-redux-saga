@@ -6,7 +6,8 @@ import Policypackage from '../page/policypackage/index';
 import PolicyCompany from '../page/policyCompany';
 import PolicyCompanyDetail from '../page/policyCompanyDetail';
 import PolicyCompanyBuild from '../page/policyCompanyBuild';
-import Step3 from '../page/policypackage/step-03';
+import CityManage from '../page/cityManage';
+import Step3 from '../page/policypackage/step-03.jsx';
 /**
  * 详情页路由定义,
  * 组件key值定义无要求，不重复即可，推介根据列表页定义，
@@ -50,6 +51,7 @@ export const componentApp = {
     'WYBpolicycompanyApp': PolicyCompany,
     'PolicyCompanyDetailApp': PolicyCompanyDetail,
     'PolicyCompanyBuildApp': PolicyCompanyBuild,
+    'WYBcityApp': CityManage,
     'Step3': Step3,
 };
 

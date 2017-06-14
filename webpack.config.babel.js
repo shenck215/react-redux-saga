@@ -21,7 +21,7 @@ const myWebpackConfig = (env) => {
     let publicPath;
 
     if(env === 'dev') {
-        publicPath = 'http://127.0.0.1:2333/';
+        publicPath = 'http://172.16.14.36:2333/';
     }else if(env === 'alpha') {
         publicPath = 'https://testnewwyb.joyomm.com/';
     }else if(env === 'beta') {
@@ -111,7 +111,7 @@ const myWebpackConfig = (env) => {
             compress: true, /* gizp */
             publicPath: '/',
             quiet: false,
-            // host: '172.16.14.36',
+            host: '172.16.14.36',
             stats: { colors: true },
             inline: true,
             historyApiFallback: true,

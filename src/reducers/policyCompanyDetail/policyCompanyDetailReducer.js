@@ -13,7 +13,7 @@ const initialState = Immutable.fromJS({
     companyName: '杭州今元嘉和人力资源有限公司',
     companyAddress: '浙江-杭州-江干',
     detailAddress: '凯旋路18号',
-    cooperationTime: '2013-12-2至2018-12-3',
+    cooperationTime: [0, 0],
     protocolFileUrl: 'http://baidu.com',
     remark: 'nothing',
     addCityModalVisible: false,
@@ -84,7 +84,11 @@ function processOperationLogResponsePayload(payload) {
 export const policyCompanyDetailReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVED_POLICY_COMPANY_DETAIL:
-            const { companyName, companyAddress, detailAddress, cooperationTime, protocolFileUrl, remark } = action.payload
+            const {
+                companyName, companyAddress, detailAddress, cooperationTime,
+                protocolFileUrl, remark
+            } = action.payload
+            console.log('protocolFileUrl', protocolFileUrl)
             return state.updateIn(['companyName'], () => companyName)
                 .updateIn(['companyAddress'], () => companyName)
                 .updateIn(['detailAddress'], () => detailAddress)

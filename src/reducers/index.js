@@ -30,6 +30,9 @@ import {
 import { policyCompanyReducer } from './policyCompany/policyCompanyReducer'
 import { policyCompanyDetailReducer } from './policyCompanyDetail/policyCompanyDetailReducer'
 import { policyCompanyBuildReducer } from './policyCompanyBuild/policyCompanyBuildReducer'
+import { cityManageReducer } from './cityManage/cityManageReducer'
+
+import { policyPackageOneReducer } from './policyPackage/policyPackageOneReducer'
 
 
 const indexReduces = combineReducers({
@@ -41,9 +44,10 @@ const indexReduces = combineReducers({
     policyCompanyReducer,
     policyCompanyDetailReducer,
     policyCompanyBuildReducer,
+    cityManageReducer,
+    policyPackageOneReducer,
     forecastPolicyInfoReducer,
     routing: routerReducer,
-    
 });
 
 export default indexReduces;

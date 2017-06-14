@@ -93,9 +93,9 @@ export const basicSettingList = (state = initialState, action) => {
                 pageSize,
                 index,
             } = parseData(params);
-
+            
             let data = updataSmallTable(dataSource,index);
-
+            
             return state.updateIn(['dataSource'], () => {
                 return Immutable.fromJS(dataSource);
             }).updateIn(['start'], () => {

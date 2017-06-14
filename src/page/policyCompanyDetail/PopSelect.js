@@ -53,14 +53,16 @@ export default class PopSelect extends Component {
                     saveCallback(serviceStateChangedValue)
                 else
                     Modal.error({title: '该服务城市的政策包不正常，无法改变服务状态，否则会影响客户下单！'})
-            }
-            // 剩下为不是停止服务
-            // 改变为停止服务的前提是 名下无在保人员
-            if (!hasSecuredCustomer) {
-                saveCallback(serviceStateChangedValue)
             } else {
-                Modal.error({title: '该服务城市还有正在服务中的参保人，状态不能设置为停止服务，否则可能会影响客户的续费！'})
+                // 剩下为不是停止服务
+                // 改变为停止服务的前提是 名下无在保人员
+                if (!hasSecuredCustomer) {
+                    saveCallback(serviceStateChangedValue)
+                } else {
+                    Modal.error({title: '该服务城市还有正在服务中的参保人，状态不能设置为停止服务，否则可能会影响客户的续费！'})
+                }
             }
+
         }
         this.setState({
             popVisible: false

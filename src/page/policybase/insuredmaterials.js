@@ -13,12 +13,12 @@ import {
 	message,
 } from 'antd';
 import insuredmaterials from '../../css/policybase/insuredmaterials';
+import MaskPrompt from '../../component/maskPrompt/maskPrompt';
 import { connect, actions } from 'react-redux';
 import {
 	fetchFn,
 } from '../../api/fetch.js';
 import apiConfig from '../../api/fetchIndex';
-import MaskPrompt from '../../component/maskPrompt/maskPrompt';
 import ImageZoom from 'react-medium-image-zoom';
 import {
 	getMaterialItemList,
@@ -499,6 +499,9 @@ class InsuredMaterials extends React.Component {
 
 		const {
 			dispatch,
+			materialArr,
+			changeStatus,
+			show,
 		} = this.props;
 
 		dispatch(lookMaterialDetail({
@@ -509,7 +512,26 @@ class InsuredMaterials extends React.Component {
 			materialName: record.name,
 		})
 
-		this.refs.maskPrompt.showWindowMask();
+		// changeStatus({
+		// 	materialName: record.name,
+		// 	materialArr,
+		// });
+
+		MaskPrompt({
+			content: <div>
+						<p>
+                            材料名称：<span className={insuredmaterials.materialName}>{record.name}</span>
+                        </p>
+                        <table className={insuredmaterials.materialTable}>
+                            <tr>
+                                <th>服务商</th><th>城市</th><th width="100">操作</th>
+                            </tr>
+                            {materialArr}
+                        </table>
+					</div>,
+		})
+
+		//show();
 	}
 
 	render() {
@@ -520,7 +542,6 @@ class InsuredMaterials extends React.Component {
 			isDeleteSuccess,
 			deleteSuccessLoading,
 			isDeleteError,
-			materialArr,
 			dispatch,
         } = this.props;
 
@@ -574,17 +595,7 @@ class InsuredMaterials extends React.Component {
 						该类型有<span>关联的服务商政策包</span>，不可直接删除，请先删除服务商政策包中此类型，再执行此操作！
                     </p>
 				</Modal>
-				<MaskPrompt ref="maskPrompt" key="2">
-					<p>
-						材料名称：<span className={insuredmaterials.materialName}>{materialName}</span>
-					</p>
-					<table className={insuredmaterials.materialTable}>
-						<tr>
-							<th>服务商</th><th>城市</th><th width="100">操作</th>
-						</tr>
-						{materialArr}
-					</table>
-				</MaskPrompt>
+				
 			</div>
 		)
 	}

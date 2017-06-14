@@ -34,28 +34,13 @@
     padding: 5px;
 }
 
-:global(.ant-form-item){
-    margin: 5px  0 0 0 !important;
-}
+
 
 :global(.ant-checkbox-group-item) span + span{
     position: relative;
     top: 2px;
 }
 
-
-:global(.window-mask) {
-    width: 103%;
-    height: 114%;
-    top: -24px;
-    left: -24px;
-}
-
-:global(.prompt) {
-    top: -24px;
-    right: -24px;
-    min-height: 114%;
-}
     
 .maskWrapperTitle{
     overflow: hidden;
@@ -91,7 +76,7 @@
 .packageIdList{
     display: inline-block;
     border: 1px solid rgba(158, 158, 158, 0.56);
-    padding: 5px 5px;
+    padding: 0 5px;
     min-width: 70px;
     margin: 0 10px 5px 0;
     text-align: center;
@@ -125,4 +110,19 @@
 }
 .deleteSuccessP span{
     color: #F60;
+}
+
+
+.existInfoCol20{
+    color: #22baa0;
+}
+.maskWrapperTitle{
+    overflow: hidden;
+    margin: 10px 0;
+}
+.maskWrapperTitleCol20{
+    font-weight: bold;
+}
+.maskWrapperTitleCol4{
+    text-align: right;
 }

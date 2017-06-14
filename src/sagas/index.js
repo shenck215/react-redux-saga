@@ -9,8 +9,10 @@ import watchinsuredmaterialsRequestList from '../sagas/policybase/insuredmateria
 import watchPolicyCompanyRequest from './policyCompany/policyCompanyListSage';
 import watchPolicyCompanyDetailRequest from './policyCompanyDetail/policyCompanyDetailSaga';
 import watchPolicyCompanyBuildRequest from './policyCompanyBuild/policyCompanyBuildSaga';
+import watchCityManageRequest from './cityManage/cityMangeSaga'
 import watchPolicyPackageList from './policypackageList/policypackageListSaga';
 import watchForecastPolicyInfo from './policypage/step-03-Saga';
+import watchPolicyPackageSetting from './policyPackage/policyPackageSagas'
 
 export const getSagaList = {
     watchGetRouterMenu,
@@ -20,8 +22,10 @@ export const getSagaList = {
     watchPolicyCompanyRequest,
     watchPolicyCompanyDetailRequest,
     watchPolicyCompanyBuildRequest,
+    watchCityManageRequest,
     watchPolicyPackageList,
     watchForecastPolicyInfo,
+    watchPolicyPackageSetting
 };
 
 

@@ -43,7 +43,7 @@ class AddCityModal extends Component {
         }]
 
         return (
-            <Modal visible={visible} title="添加服务城市" cancelText="放弃" okText="确认" onOk={this.submit} onCancel={() => {resetFields(); cancel()}}>
+            <Modal visible={visible} title="编辑服务城市" cancelText="放弃" okText="确认" onOk={this.submit} onCancel={() => {resetFields(); cancel()}}>
                 <Form onSubmit={this.submit}>
                     <FormItem label="服务城市" {...formItemLayout} >
                         {

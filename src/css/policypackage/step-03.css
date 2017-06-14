@@ -28,6 +28,6 @@
     top: -9px;
 }
 
-:global(.ant-popover-inner-content) div:first-child{
+/*:global(.ant-popover-inner-content) div:first-child{
     max-height: 28px;
-}
+}*/

@@ -1,19 +1,18 @@
 :global(.window-mask) {
-    display: none;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 99;
 }
 
 :global(.prompt) {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 10000;
+    z-index: 100;
     width: 40%;
     min-height: 100%;
     background: #fff;

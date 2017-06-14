@@ -2,8 +2,12 @@
  * Created by YiShuai on 2017/6/1.
  */
 import moment from 'moment'
+
+// 时间戳转格式化日期字符串
 export const unixToFormatedDataTime = (unix) => moment.unix(unix).format('YYYY-MM-DD')
 
+// 时间戳转为moment对象
+export const unixToMoment = (unix) => moment(unix, 'X')
 
 // moment对象解析为时间戳
 export const momentToUnix = (moment) => moment.format('X')

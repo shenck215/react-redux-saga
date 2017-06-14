@@ -1,0 +1,13 @@
+.formContainer{
+    padding: 4px 4px 0px;
+    min-width: 250px;
+}
+.formContainer:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.btnAction{
+    margin-left: 4px;
+}

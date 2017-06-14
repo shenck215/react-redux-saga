@@ -18,6 +18,7 @@ import {
     hasReceiverInThisCompany
 } from '../../action/policyCompanyDetail/policyCompanyDetailAction'
 import { Link } from 'react-router'
+import { unixToMoment, unixToFormatedDataTime } from '../policyCompany/utils'
 
 const FormItem = Form.Item
 const { RangePicker } = DatePicker
@@ -235,16 +236,16 @@ class PolicyCompanyDetail extends Component {
         // 操作日志表格列
         const columnsLog = [{
             title: '操作时间',
-            dataIndex: 'operateTime',
-            key: 'operateTime'
+            dataIndex: 'createTime',
+            key: 'createTime'
         }, {
             title: '操作人',
-            dataIndex: 'operatePeople',
-            key: 'operatePeople'
+            dataIndex: 'actName',
+            key: 'actName'
         }, {
             title: '动作',
-            dataIndex: 'operation',
-            key: 'operation'
+            dataIndex: 'actType',
+            key: 'actType'
         }, {
             title: '备注说明',
             dataIndex: 'remark',
@@ -338,7 +339,7 @@ class PolicyCompanyDetail extends Component {
                             <FormItem label="合作时间">
                                 {
                                     getFieldDecorator('cooperationTime')(
-                                        <span>{cooperationTime}</span>
+                                        <span>{`${unixToFormatedDataTime(cooperationTime[0])}至${unixToFormatedDataTime(cooperationTime[1])}`}</span>
                                     )
                                 }
                             </FormItem>
@@ -346,9 +347,7 @@ class PolicyCompanyDetail extends Component {
                         <Col span={12}>
                             <FormItem label="协议文件">
                                 {
-                                    getFieldDecorator('protocolFileUrl')(
-                                        <a target="_blank" href={protocolFileUrl}>查看</a>
-                                    )
+                                    protocolFileUrl? <a href={protocolFileUrl} target="blank">查看</a> : '-/-'
                                 }
                             </FormItem>
                         </Col>
@@ -406,7 +405,9 @@ class PolicyCompanyDetail extends Component {
                         <Col span={12} style={{marginTop: 20}}>
                             <FormItem label="合作时间" {...formItemlayout} style={{width: 400}}>
                                 {
-                                    getFieldDecorator('cooperationTime')(
+                                    getFieldDecorator('cooperationTime', {
+                                        initialValue: [unixToMoment(cooperationTime[0], 'X'), unixToMoment(cooperationTime[1], 'X')]
+                                    })(
                                         <RangePicker placeholder={['合作开始日期', '合作结束日期']}/>
                                     )
                                 }
@@ -414,10 +415,13 @@ class PolicyCompanyDetail extends Component {
                         </Col>
                         <Col span={12} style={{marginTop: 20}}>
                             <FormItem label="协议文件" {...formItemlayout}  style={{width: 300}}>
+                                {/*{*/}
+                                    {/*getFieldDecorator('protocolFileUrl')(*/}
+                                        {/*<a href={protocolFileUrl?protocolFileUrl:''}>{protocolFileUrl?'查看':'-/-'}</a>*/}
+                                    {/*)*/}
+                                {/*}*/}
                                 {
-                                    getFieldDecorator('protocolFileUrl')(
-                                        <a href={this.props.protocolFileUrl}>查看</a>
-                                    )
+                                    protocolFileUrl? <a href={protocolFileUrl}>查看</a> : '-/-'
                                 }
                             </FormItem>
                         </Col>
@@ -572,10 +576,10 @@ class PolicyCompanyDetail extends Component {
         validateFields((err, value) => {
             if (!err) {
                 this.props.dispatch(savingLoading(true))
-                // 修改页面数据
-                this.props.dispatch(receivedPolicyCompanyDetail(value))
-                // 向服务器发起修改请求
-                this.props.dispatch(putModifiedCompanyInfo(value))
+                // // 修改页面数据
+                // this.props.dispatch(receivedPolicyCompanyDetail(value))
+                // // 向服务器发起修改请求
+                // this.props.dispatch(putModifiedCompanyInfo(value))
             }
         })
     }
@@ -919,7 +923,6 @@ const PolicyCompanyDetailWrapper = Form.create()(PolicyCompanyDetail)
 
 function mapStateToProps(state) {
     const data = state.getIn(['policyCompanyDetailReducer'])
-    console.log('lalalala', data.getIn(['operationDataSource']).toJS())
     return {
         companyName: data.getIn(['companyName']),
         companyAddress: data.getIn(['companyAddress']),

@@ -15,8 +15,8 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import FilterTable from '../../component/filterTable/filterTable';
-import ControlledComponent from '../../component/controlledComponent/controlledComponent';
 import MaskPrompt from '../../component/maskPrompt/maskPrompt';
+import ControlledComponent from '../../component/controlledComponent/controlledComponent';
 import basicSettingStyle from '../../css/policybase/basicSetting';
 import {
     getBasicSettingList,
@@ -62,7 +62,8 @@ class BasicSettingApp extends React.Component {
             index,
             start,
             length,
-        }));
+        }))
+
     }
 
     setChangeCache = {
@@ -97,8 +98,8 @@ class BasicSettingApp extends React.Component {
                     vaildType="select"
                     placeholder="请选择"
                     allowClear={true}
-                    //defaultValue={this.props.province ? this.props.province : '请选择'}
-                    
+                //defaultValue={this.props.province ? this.props.province : '请选择'}
+
                 //value={this.state.province}
                 //onChange={value => this.handleSearchChangeCache(value, 'province')}
                 >
@@ -159,15 +160,15 @@ class BasicSettingApp extends React.Component {
                                 style={{ color: '#2196F3', textDecoration: 'underline', cursor: 'pointer' }}
                             >
                                 是
-                                    </span>
+                            </span>
                         }
-                        fixed={true}
                         ok={e => this.updateBtn(record.areaId, 'isMainArea')}
                     >
                         <Select
                             laceholder="请选择"
                             onChange={value => this.handleSetChangeCache(value, 'isMainArea')}
                             defaultValue={text}
+                            style={{ width: 100 }}
                         >
                             <Option value={true}>是</Option>
                             <Option value={false}>否</Option>
@@ -184,13 +185,13 @@ class BasicSettingApp extends React.Component {
                                     </span>
 
                         }
-                        fixed={true}
                         ok={e => this.updateBtn(record.areaId, 'isMainArea')}
                     >
                         <Select
                             placeholder="请选择"
                             onChange={value => this.handleSetChangeCache(value, 'isMainArea')}
                             defaultValue={text}
+                            style={{ width: 100 }}
                         >
                             <Option value={true}>是</Option>
                             <Option value={false}>否</Option>
@@ -244,7 +245,8 @@ class BasicSettingApp extends React.Component {
                         }
                         hasBtn={false}
                         tabDisabled={true}
-                        overlayStyle={{width: 430}}
+                        overlayStyle={{ width: 435 }}
+
                     >
                         <div className={basicSettingStyle.existInfoDiv} style={{ width: 400 }}>
                             <div style={{ height: 30 }}>
@@ -349,16 +351,17 @@ class BasicSettingApp extends React.Component {
                         dom={
                             <span style={{ color: '#2196F3', textDecoration: 'underline', cursor: 'pointer' }}>{text}</span>
                         }
-                        fixed={true}
                         ok={e => this.updateBtn(record.areaId, 'insuranceDeadline')}
                     >
                         <Select
                             key="insuranceDeadline"
                             vaildType="select"
                             placeholder="请选择"
+                            Validator={(rule, value, callback, errmsg) => this.selectValidator(rule, value, callback, '社保截点日不能为空')}
                             errmsg="请设置当地社保的截点日"
                             onChange={value => this.handleSetChangeCache(value, 'insuranceDeadline')}
                             defaultValue={text ? text : ''}
+                            style={{ width: 140 }}
                         >
                             {this.getSelect()}
                         </Select>
@@ -369,7 +372,6 @@ class BasicSettingApp extends React.Component {
                         dom={
                             <span style={{ color: '#F60', textDecoration: 'underline', cursor: 'pointer' }}>请设置</span>
                         }
-                        fixed={true}
                         ok={e => this.updateBtn(record.areaId, 'insuranceDeadline')}
                     >
                         <Select
@@ -377,8 +379,10 @@ class BasicSettingApp extends React.Component {
                             vaildType="select"
                             placeholder="请选择"
                             errmsg="请设置当地社保的截点日"
+                            Validator={(rule, value, callback, errmsg) => this.selectValidator(rule, value, callback, '社保截点日不能为空')}
                             onChange={value => this.handleSetChangeCache(value, 'insuranceDeadline')}
                             defaultValue={text ? text : ''}
+                            style={{ width: 140 }}
                         >
                             {this.getSelect()}
                         </Select>
@@ -396,7 +400,6 @@ class BasicSettingApp extends React.Component {
                         dom={
                             <span style={{ color: '#2196F3', textDecoration: 'underline', cursor: 'pointer' }}>{text}</span>
                         }
-                        fixed={true}
                         ok={e => this.updateBtn(record.areaId, 'housingFundDeadline')}
                     >
                         <Select
@@ -404,8 +407,10 @@ class BasicSettingApp extends React.Component {
                             vaildType="select"
                             placeholder="请选择"
                             errmsg="请设置当地公积金的截点日"
+                            Validator={(rule, value, callback, errmsg) => this.selectValidator(rule, value, callback, '公积金截点日不能为空')}
                             onChange={value => this.handleSetChangeCache(value, 'housingFundDeadline')}
                             defaultValue={text ? text : ''}
+                            style={{ width: 140 }}
                         >
                             {this.getSelect()}
                         </Select>
@@ -416,7 +421,6 @@ class BasicSettingApp extends React.Component {
                         dom={
                             <span style={{ color: '#F60', textDecoration: 'underline', cursor: 'pointer' }}>请设置</span>
                         }
-                        fixed={true}
                         ok={e => this.updateBtn(record.areaId, 'housingFundDeadline')}
                     >
                         <Select
@@ -424,8 +428,10 @@ class BasicSettingApp extends React.Component {
                             vaildType="select"
                             placeholder="请选择"
                             errmsg="请设置当地公积金的截点日"
+                            Validator={(rule, value, callback, errmsg) => this.selectValidator(rule, value, callback, '公积金截点日不能为空')}
                             onChange={value => this.handleSetChangeCache(value, 'housingFundDeadline')}
                             defaultValue={text ? text : ''}
+                            style={{ width: 140 }}
                         >
                             {this.getSelect()}
                         </Select>
@@ -467,8 +473,9 @@ class BasicSettingApp extends React.Component {
                         ok={e => this.existAreaPackageOkBtn(areaId, 'packageIdList')}
                         cancel={e => this.existAreaPackageCancelBtn()}
                         hasBtn={this.state.hasBtn}
+                        placement="left"
                         tabDisabled={true}
-                        btnStyle={{position: 'relative',top: '30px'}}
+                        btnStyle={{ position: 'relative', top: '8px' }}
                     >
                         {
                             this.state.isEdit ?
@@ -484,7 +491,7 @@ class BasicSettingApp extends React.Component {
                                     </div>
                                 </div>
                                 :
-                                <div style={{ width: 270,height: 76 }}>
+                                <div style={{ width: 270, height: 76 }}>
                                     <CheckboxGroup options={packageListOptions} value={this.state.packageIdList} onChange={value => this.handleSetChangeCache(value, 'packageIdList')} />
                                 </div>
 
@@ -503,10 +510,12 @@ class BasicSettingApp extends React.Component {
                                 请设置
                             </span>
                         }
-                        btnStyle={{position: 'relative',top: '30px'}}
+                        btnStyle={{ position: 'relative', top: '8px' }}
+                        placement="left"
                         ok={e => this.existAreaPackageOkBtn(areaId, 'packageIdList')}
+                        cancel={e => this.existAreaPackageCancelBtn()}
                     >
-                        <div style={{ width: 270,height: 76 }}>
+                        <div style={{ width: 270, height: 76 }}>
                             <CheckboxGroup options={packageListOptions} value={this.state.packageIdList} onChange={value => this.handleSetChangeCache(value, 'packageIdList')} />
                         </div>
 
@@ -514,6 +523,22 @@ class BasicSettingApp extends React.Component {
                 }
             }
         }];
+
+    /**
+     * 下拉框非空校验
+     * @param {*} rule 
+     * @param {*} value 
+     * @param {*} callback 
+     * @param {*} errmsg 
+     */
+    selectValidator(rule, value, callback, errmsg) {
+
+        if (!value) {
+            return callback(errmsg);
+        }
+
+        callback()
+    }
 
 
     /**
@@ -599,6 +624,8 @@ class BasicSettingApp extends React.Component {
         })
     }
 
+    maskPrompt;
+
 
     /**
      * 参保类型参看遮罩
@@ -610,6 +637,11 @@ class BasicSettingApp extends React.Component {
         const {
             dispatch,
             dataSource,
+            changeStatus,
+            show,
+            socialList,
+            fundList,
+            counter,
         } = this.props;
 
         this.setState({
@@ -627,7 +659,51 @@ class BasicSettingApp extends React.Component {
                 resolve,
             }));
         }).then(() => {
-            this.refs.maskPrompt.showWindowMask();
+
+            const {
+                socialList,
+                fundList,
+            } = this.props;
+
+
+            this.maskPrompt = MaskPrompt({
+                content: <div>
+                    <div>
+                        <span>当前城市：</span><span className={basicSettingStyle.existInfoCol20}>{record.provinceName} - {record.cityName} - {record.areaName}</span>
+                    </div>
+                    <div className={basicSettingStyle.maskWrapperTitle}>
+                        <Col span="20" className={basicSettingStyle.maskWrapperTitleCol20}>
+                            {nowKey === 'existInsurance' ? '社保参保类型' : '公积金参保类型'}
+                        </Col>
+                        <Col span="4" className={basicSettingStyle.maskWrapperTitleCol4}>
+                            <Button type="primary" onClick={() => { this.editOrNewSmallTable(nowKey, { areaId: record.areaId, }) }}>新增</Button>
+                        </Col>
+                    </div>
+                    <Table
+                        key={counter}
+                        size="small"
+                        pagination={false}
+                        bordered={true}
+                        columns={this.getSmallColumns()}
+                        dataSource={nowKey === 'existInsurance' ? socialList : fundList}
+                    />
+                </div>,
+                type: 'init',
+            })
+            // changeStatus({
+            //     areaId: record.areaId,
+            //     socialList,
+            //     fundList,
+            //     nowKey,
+            //     counter,
+            //     provinceName: record.provinceName,
+            //     cityName: record.cityName,
+            //     areaName: record.areaName,
+            //     getSmallColumns: this.getSmallColumns(),
+            //     editOrNewSmallTable: () => { this.editOrNewSmallTable(nowKey, { areaId: record.areaId, }) },
+            // });
+            // show();
+
         });
     }
 
@@ -789,6 +865,8 @@ class BasicSettingApp extends React.Component {
             start,
             length,
             index,
+            changeStatus,
+            counter,
         } = this.props;
 
         const {
@@ -819,9 +897,62 @@ class BasicSettingApp extends React.Component {
                 description: description,
             }))
         }).then(() => {
-            this.setState({
-                smallTableVisible: false,
-            });
+
+            return new Promise((resolve, reject) => {
+                dispatch(getBasicSettingList({
+                    start,
+                    length,
+                    index,
+                    resolve,
+                }));
+            }).then(() => {
+
+                const {
+                    socialList,
+                    fundList,
+                    counter,
+                } = this.props;
+
+                const {
+                    nowKey,
+                    provinceName,
+                    cityName,
+                    areaId,
+                    areaName,
+                } = this.state;
+
+                this.maskPrompt.close();
+
+                this.maskPrompt = MaskPrompt({
+                    content: <div>
+                        <div>
+                            <span>当前城市：</span><span className={basicSettingStyle.existInfoCol20}>{provinceName} - {cityName} - {areaName}</span>
+                        </div>
+                        <div className={basicSettingStyle.maskWrapperTitle}>
+                            <Col span="20" className={basicSettingStyle.maskWrapperTitleCol20}>
+                                {nowKey === 'existInsurance' ? '社保参保类型' : '公积金参保类型'}
+                            </Col>
+                            <Col span="4" className={basicSettingStyle.maskWrapperTitleCol4}>
+                                <Button type="primary" onClick={() => { this.editOrNewSmallTable(nowKey, { areaId: areaId, }) }}>新增</Button>
+                            </Col>
+                        </div>
+                        <Table
+                            key={counter}
+                            size="small"
+                            pagination={false}
+                            bordered={true}
+                            columns={this.getSmallColumns()}
+                            dataSource={nowKey === 'existInsurance' ? socialList : fundList}
+                        />
+                    </div>,
+                    type: 'update',
+                });
+
+                this.setState({
+                    smallTableVisible: false,
+                });
+            })
+
         });
 
     }
@@ -893,6 +1024,10 @@ class BasicSettingApp extends React.Component {
 
         if (flag) {
             message.error('请设置当前城市开通的产品套餐');
+            this.setState({
+                isEdit: true,
+                hasBtn: false,
+            });
             return false;
         } else {
 
@@ -943,18 +1078,72 @@ class BasicSettingApp extends React.Component {
      * 删除成功弹窗--确认按钮
      */
     deleteSuccessModalOk(id, index) {
+        
         const {
             dispatch,
             start,
             length,
         } = this.props;
 
-        dispatch(getDeleteSocialSet({
-            start,
-            length,
-            id,
-            index,
-        }))
+        return new Promise((resolve, reject) => {
+            dispatch(getDeleteSocialSet({
+                start,
+                length,
+                id,
+                index,
+                resolve,
+            }))
+        }).then(() => {
+
+            
+
+                const {
+                    socialList,
+                    fundList,
+                    counter,
+                } = this.props;
+
+                const {
+                    nowKey,
+                    provinceName,
+                    cityName,
+                    areaId,
+                    areaName,
+                } = this.state;
+
+                this.maskPrompt.close();
+
+                this.maskPrompt = MaskPrompt({
+                    content: <div>
+                        <div>
+                            <span>当前城市：</span><span className={basicSettingStyle.existInfoCol20}>{provinceName} - {cityName} - {areaName}</span>
+                        </div>
+                        <div className={basicSettingStyle.maskWrapperTitle}>
+                            <Col span="20" className={basicSettingStyle.maskWrapperTitleCol20}>
+                                {nowKey === 'existInsurance' ? '社保参保类型' : '公积金参保类型'}
+                            </Col>
+                            <Col span="4" className={basicSettingStyle.maskWrapperTitleCol4}>
+                                <Button type="primary" onClick={() => { this.editOrNewSmallTable(nowKey, { areaId: areaId, }) }}>新增</Button>
+                            </Col>
+                        </div>
+                        <Table
+                            key={counter}
+                            size="small"
+                            pagination={false}
+                            bordered={true}
+                            columns={this.getSmallColumns()}
+                            dataSource={nowKey === 'existInsurance' ? socialList : fundList}
+                        />
+                    </div>,
+                    type: 'update',
+                });
+
+                this.setState({
+                    smallTableVisible: false,
+                });
+            })
+
+
     }
 
     /**
@@ -1019,9 +1208,9 @@ class BasicSettingApp extends React.Component {
             dataSource,
             loading,
             start,
-            counter,
-            socialList,
-            fundList,
+            // counter,
+            // socialList,
+            // fundList,
             deleteSuccessVisible,
             deleteErrorVisible,
         } = this.props;
@@ -1060,9 +1249,9 @@ class BasicSettingApp extends React.Component {
             title: '设置官方查询信息',
             onCancel: () => this.existInfoModalCancel(),
             footer: <div>
-                        <Button onClick={() => this.existInfoModalCancel()}>取消</Button>
-						<Button type="primary" loading={this.props.existInfoModalLoading} onClick={() => this.existInfoModalOk('existInfo', setChangeCache)}>确认</Button>
-                    </div>,
+                <Button onClick={() => this.existInfoModalCancel()}>取消</Button>
+                <Button type="primary" loading={this.props.existInfoModalLoading} onClick={() => this.existInfoModalOk('existInfo', setChangeCache)}>确认</Button>
+            </div>,
             afterClose: () => {
 
             }
@@ -1076,9 +1265,9 @@ class BasicSettingApp extends React.Component {
             title: '设置参保类型',
             onCancel: () => this.editOrNewSmallTableModalCancel(),
             footer: <div>
-                        <Button onClick={() => this.editOrNewSmallTableModalCancel()}>取消</Button>
-						<Button type="primary" loading={this.props.smallTableModalLoading} onClick={() => this.editOrNewSmallTableModalOk(areaId, nowKey, id)}>确认</Button>
-                    </div>,
+                <Button onClick={() => this.editOrNewSmallTableModalCancel()}>取消</Button>
+                <Button type="primary" loading={this.props.smallTableModalLoading} onClick={() => this.editOrNewSmallTableModalOk(areaId, nowKey, id)}>确认</Button>
+            </div>,
             afterClose: () => {
 
             }
@@ -1106,9 +1295,9 @@ class BasicSettingApp extends React.Component {
             title: '操作提示',
             onCancel: () => this.deleteSuccessModalCancel(),
             footer: <div>
-                        <Button onClick={() => this.deleteSuccessModalCancel()}>取消</Button>
-						<Button type="primary" loading={this.props.deleteSuccessLoading} onClick={() => this.deleteSuccessModalOk(id, this.props.index)}>确认</Button>
-                    </div>,
+                <Button onClick={() => this.deleteSuccessModalCancel()}>取消</Button>
+                <Button type="primary" loading={this.props.deleteSuccessLoading} onClick={() => this.deleteSuccessModalOk(id, this.props.index)}>确认</Button>
+            </div>,
             afterClose: () => {
 
             }
@@ -1220,6 +1409,7 @@ class BasicSettingApp extends React.Component {
                         />
                     </div>
                 </Modal>
+
                 <Modal {...deleteErrorProps}>
                     <Icon
                         className={basicSettingStyle.deleteErrorI}
@@ -1238,27 +1428,7 @@ class BasicSettingApp extends React.Component {
                         您确认要<span>删除</span>吗？
                     </p>
                 </Modal>
-                <MaskPrompt ref="maskPrompt">
-                    <div>
-                        <span>当前城市：</span><span className={basicSettingStyle.existInfoCol20}>{provinceName} - {cityName} - {areaName}</span>
-                    </div>
-                    <div className={basicSettingStyle.maskWrapperTitle}>
-                        <Col span="20" className={basicSettingStyle.maskWrapperTitleCol20}>
-                            {nowKey === 'existInsurance' ? '社保参保类型' : '公积金参保类型'}
-                        </Col>
-                        <Col span="4" className={basicSettingStyle.maskWrapperTitleCol4}>
-                            <Button type="primary" onClick={() => this.editOrNewSmallTable(nowKey, { areaId, })}>新增</Button>
-                        </Col>
-                    </div>
-                    <Table
-                        key={counter}
-                        size="small"
-                        pagination={false}
-                        bordered={true}
-                        columns={this.getSmallColumns()}
-                        dataSource={nowKey === 'existInsurance' ? socialList : fundList}
-                    />
-                </MaskPrompt>
+
 
             </div>
         );

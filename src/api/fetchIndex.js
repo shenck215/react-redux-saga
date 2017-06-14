@@ -24,7 +24,7 @@ let apiConfig = {
     existMaterialName: `${config}/api/policy/material/existMaterialName`,//材料名称是否存在
     imgUpload: `${config}/api/imgUpload`,//上传
     //服务商政策管理
-    getCompanyStrategyList: `${config}/api/policy/cityStrategy/getCompanyStrategyList`,//服务商政策管理列表
+    // getCompanyStrategyList: `${config}/api/policy/cityStrategy/getCompanyStrategyList`,//服务商政策管理列表
     exportCompanyStrategyExcel: `${config}/api/policy/cityStrategy/exportCompanyStrategyExcel`,//服务商政策管理导出
     // 服务商管理
     queryCompanyList: `${config}/api/policy/company/queryCompanyList`,// 查询服务商列表
@@ -46,8 +46,14 @@ let apiConfig = {
     deleteServiceCity: `${config}/api/policy/companyCity/deleteCompanyCity`, // 删除服务城市
     addServiceCity: `${config}/api/policy/companyCity/addCompanyCity`, // 添加服务城市
     hasSecuredCustomerInServiceCity: `${config}/api/policy/companyCity/getIfHaveServicingInsurerAtCompanyCity`, // 城市名下是否有参保人员
+    //开通城市管理
+    getCompanyStrategyList: `${config}/api/policy/cityStrategy/getCompanyStrategyList`, // 服务商政策列表
+    addPolicyPackageOneSetting: `${config}/api/policy/cityStrategy/addCityStrategyBaseInfo`,//政策包设置一
+    getCompanyByAreaId: `${config}/api/policy/companyCity/getCompanyByAreaId`,// 根据城市查询服务商
     //设置政策报第三步
     getForecastPolicyInfo: `${config}/api/policy/socialset/getForecastPolicyInfo`,//获取初始数据
+    getRemarkOfEdit: `${config}/api/policy/socialset/getRemarkOfEdit`,//页面编辑上浮时候的备注展示
+    saveForecastPolicyInfo: `${config}/api/policy/socialset/saveForecastPolicyInfo`,//保存预测包设置数据
 }
 
 export default apiConfig;

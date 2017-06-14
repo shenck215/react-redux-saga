@@ -18,6 +18,7 @@ function* getCompanyList(payload) {
     }
 }
 
+// 过滤项转请求参数
 function processFilterOptionToRequestParam(payload) {
     return {
         start: (payload.pageNow - 1) * payload.pageSize,
@@ -25,11 +26,11 @@ function processFilterOptionToRequestParam(payload) {
         companyName: payload.companyName ? payload.companyName : null,
         cooperateStartTime: payload.cooperateStartTime ? payload.cooperateStartTime : null,
         cooperateEndTime: payload.cooperateEndTime ? payload.cooperateEndTime :null,
-        serviceCityNum: payload.serviceCityNum ? Number(payload.serviceCityNum.split('~')[0]) : null,
+        serviceCityNum: payload.serviceCityNum ? payload.serviceCityNum : null,
         companyAddress: payload.companyAddress ? payload.companyAddress : null
     }
 }
-
+// 响应数据转state
 function processResponseToProps(response) {
     if (response && response.data) {
         return {

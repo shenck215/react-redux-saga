@@ -6,6 +6,7 @@ import {
     Form,
     Tooltip,
 } from 'antd';
+import moment from 'moment';
 const FormItem = Form.Item;
 import filterTableStyle from '../../css/plugin/filterTable/filterTable';
 
@@ -23,7 +24,9 @@ import filterTableStyle from '../../css/plugin/filterTable/filterTable';
  * formStyle 外层form样式
  * 
  * 若需要验证
- * 须传入key vaildType defaultValue
+ * vaildType子节点类型
+ * Validator校验规则functions
+ * defaultValue默认值
  * 
  */
 
@@ -41,7 +44,7 @@ class FilterTableFrom extends React.Component {
         const checkConfirm = this.checkConfirm;
         const { getFieldDecorator } = this.props.form;
         let node = [];
-        
+
         React.Children.map(children, function (child, i) {
             const {
                 key,
@@ -49,11 +52,10 @@ class FilterTableFrom extends React.Component {
             } = child;
             const {
                 vaildType,
-                value,
+                Validator,
                 defaultValue,
-                errmsg,
              } = props;
-             
+
             if (vaildType) {
                 switch (vaildType) {
                     case 'input':
@@ -62,9 +64,10 @@ class FilterTableFrom extends React.Component {
                                 getFieldDecorator(key, {
                                     rules: [
                                         {
-                                            required: true, message: 'Please input your input!',
+                                            validator: Validator
                                         }
                                     ],
+                                    initialValue: defaultValue
                                 })(
                                     child
                                 )}
@@ -78,13 +81,13 @@ class FilterTableFrom extends React.Component {
                                 getFieldDecorator(key, {
                                     rules: [
                                         {
-                                            required: true, message: errmsg,
+                                            validator: Validator
                                         }
                                     ],
                                     initialValue: defaultValue
                                 })(
                                     child
-                                )}
+                                    )}
                             </FormItem>
                         );
                         break;
@@ -93,7 +96,7 @@ class FilterTableFrom extends React.Component {
                 }
             } else {
                 node.push(
-                    <span>{child}</span>
+                    <FormItem>{child}</FormItem>
                 )
 
             }
@@ -107,7 +110,7 @@ class FilterTableFrom extends React.Component {
         } = this.props;
         const children = this.getChildren();
         return (
-            <Form style={formStyle?formStyle:{}}>
+            <Form style={formStyle ? formStyle : {}} className="form_style">
                 {children}
             </Form>
         )
@@ -133,24 +136,24 @@ class FilterTable extends React.Component {
             controlVisible: !this.state.controlVisible,
         });
 
-        if(tabDisabled){
-            if(!this.state.controlVisible){
+        if (tabDisabled) {
+            if (!this.state.controlVisible) {
                 document.querySelector('.ant-tabs-tab-active').setAttribute("class", "ant-tabs-tab ant-tabs-tab-active ant-tabs-tab-disabled");
                 let arr = document.querySelectorAll('.ant-tabs-tab:not(.ant-tabs-tab-active)');
-                for(let item of arr) {
+                for (let item of arr) {
                     item.setAttribute("class", "ant-tabs-tab ant-tabs-tab-disabled");
                 }
-            }else{
+            } else {
                 document.querySelector('.ant-tabs-tab-active').setAttribute("class", "ant-tabs-tab ant-tabs-tab-active");
                 let arr = document.querySelectorAll('.ant-tabs-tab:not(.ant-tabs-tab-active)');
-                for(let item of arr) {
+                for (let item of arr) {
                     item.setAttribute("class", "ant-tabs-tab");
                 }
             }
         }
-        
+
     }
-    
+
     ok() {
         const {
             reg,
@@ -164,9 +167,9 @@ class FilterTable extends React.Component {
          */
         let result = false;
         this.FilterTableFromContent.validateFields((err, values) => {
-            
+
             if (!err) {
-                console.log('Received values of form: ', values);
+                //.log('Received values of form: ', values);
                 result = true;
             }
         });
@@ -174,9 +177,9 @@ class FilterTable extends React.Component {
 
 
         if (ok) {
-            
+
             ok();
-            
+
             this.controlVisible();
             return;
         }
@@ -189,9 +192,9 @@ class FilterTable extends React.Component {
 
         const {
             cancel,
-        } =this.props;
+        } = this.props;
 
-        if(cancel){
+        if (cancel) {
             cancel();
             this.controlVisible();
             return;
@@ -200,7 +203,7 @@ class FilterTable extends React.Component {
     }
 
     getPopupContainer(triggerNode) {
-        
+
         return triggerNode.parentNode;
     }
 
@@ -212,27 +215,27 @@ class FilterTable extends React.Component {
             formStyle,
         } = this.props;
         return (
-            <div style={{minWidth: 260}}>
+            <div style={{ minWidth: 200, overflow: 'hidden' }}>
                 <FilterTableFromContent formStyle={formStyle} ref={node => this.FilterTableFromContent = node}>{children}</FilterTableFromContent>
                 {
-                    hasBtn?
-                    <div className="btn_div" style={btnStyle}>
-                        <Button
-                            className="ok"
-                            type="primary"
-                            onClick={e => this.ok(e)}
-                        >
-                            保存
+                    hasBtn ?
+                        <div className="btn_div" style={btnStyle}>
+                            <Button
+                                className="ok"
+                                type="primary"
+                                onClick={e => this.ok(e)}
+                            >
+                                保存
                         </Button>
-                        <Button
-                            className="cancel"
-                            onClick={e => this.cancel(e)}
-                        >
-                            取消
+                            <Button
+                                className="cancel"
+                                onClick={e => this.cancel(e)}
+                            >
+                                取消
                         </Button>
-                    </div>
-                    :
-                    ''
+                        </div>
+                        :
+                        ''
                 }
             </div>
         )
@@ -247,23 +250,23 @@ class FilterTable extends React.Component {
             overlayClassName,
             fixed,
         } = this.props;
-        
+
         let popoverProps = {
             content: this.contentProps(),
             trigger: "click",
             visible: this.state.controlVisible,
             placement: placement ? placement : 'bottom',
-            overlayStyle: overlayStyle? overlayStyle:{},
-            overlayClassName: overlayClassName? overlayClassName:'',
+            overlayStyle: overlayStyle ? overlayStyle : {},
+            overlayClassName: overlayClassName ? overlayClassName : '',
             arrowPointAtCenter: true,
         }
 
-        if(fixed){
+        if (fixed) {
             popoverProps.getPopupContainer = (triggerNode) => this.getPopupContainer(triggerNode);
         }
 
         return (
-            <div style={{position: 'relative'}}>
+            <div style={{ position: 'relative' }}>
                 {title}
 
                 <Popover

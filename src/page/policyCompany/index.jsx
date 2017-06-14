@@ -89,10 +89,10 @@ class PolicyCompany extends React.Component {
         }, {
             title:  <PopFilter title="服务城市数量" iconType="filter" save={(valid) => this.filterSave('serviceCityNum', valid)}>
                 <Select value={this.state.serviceCityNum} defaultValue={this.props.serviceCityNum?this.props.serviceCityNum:''} onChange={(value) => this.handleFilterCache('serviceCityNum', value)}>
-                    <Select.Option value="0">0</Select.Option>
-                    <Select.Option value="1~3">1~3</Select.Option>
-                    <Select.Option value="3~5">3~5</Select.Option>
-                    <Select.Option value="5~">5个及以上</Select.Option>
+                    <Select.Option value={0}>0</Select.Option>
+                    <Select.Option value={1}>1~3</Select.Option>
+                    <Select.Option value={2}>3~5</Select.Option>
+                    <Select.Option value={3}>5个及以上</Select.Option>
                 </Select>
             </PopFilter>,
             dataIndex: 'serviceCityNum',

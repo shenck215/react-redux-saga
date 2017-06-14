@@ -3,13 +3,20 @@
     display: inline-block;
 }
 :global(.btn_div) :global(.ok){
-    margin: 0 5px;
+    margin: 2px 5px 0;
     padding: 0 8px;
 }
 :global(.btn_div) :global(.cancel){
     padding: 0 8px;
 }
-:global(.ant-popover-inner-content) :global(.ant-form-horizontal){
-    display: inline-block;
-    width: 150px;
+:global(.ant-form-item){
+    margin: 0 !important;
 }
+:global(.form_style){
+    float: left;
+}
+/*:global(.ant-popover-inner-content) :global(.ant-form-horizontal){
+    display: inline-block;
+
+    width: 150px;
+}*/

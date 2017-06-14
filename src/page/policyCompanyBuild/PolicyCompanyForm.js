@@ -153,6 +153,9 @@ class PolicyCompanyForm extends Component {
                                 rules: [{
                                     required: true,
                                     message: '必填项'
+                                }, {
+                                    pattern: /^\w{4,40}$/,
+                                    message: '输入内容请保持在4-40个字符'
                                 }]
                             }
                         )(

@@ -71,8 +71,9 @@ class policypackageListApp extends Component {
      */
     getcolumns = () => [
         {
-            title: <FilterTable title="服务商名称" type="filter" ok={e => this.searchBtn('companyName')}>
+            title: <FilterTable title="服务商名称" type="filter" fixed={true} overlayStyle={{width: 260}} ok={e => this.searchBtn('companyName')}>
                 <Input
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('companyName')}
                     onChange={e => this.handleSearchChangeCache(e.target['value'], 'companyName')}
                 />
@@ -86,8 +87,9 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="服务城市" type="filter" ok={e => this.searchBtn('serviceCity')}>
+            title: <FilterTable title="服务城市" type="filter" fixed={true} overlayStyle={{width: 260}} ok={e => this.searchBtn('serviceCity')}>
                 <Input
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('serviceCity')}
                     onChange={e => this.handleSearchChangeCache(e.target['value'], 'serviceCity')}
                 />
@@ -113,6 +115,7 @@ class policypackageListApp extends Component {
                 <Select
                     key={new Date().getTime()}
                     placeholder="请选择"
+                    style={{width: 90}}
                     allowClear
                     defaultValue={this.props.searchParamsCashe.get('serviceStatus')}
                     onChange={e => this.handleSearchChangeCache(e, 'serviceStatus')}
@@ -134,6 +137,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('serviceCharge')}
                     onChange={e => this.handleSearchChangeCache(e, 'serviceCharge')}
                 >
@@ -155,6 +159,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('strategyStatus')}
                     onChange={e => this.handleSearchChangeCache(e, 'strategyStatus')}
                 >
@@ -181,11 +186,12 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="缴纳规则" type="filter" fixed={true} ok={e => this.searchBtn('paymentRule')}>
+            title: <FilterTable title="缴纳规则" type="filter" fixed={true} overlayStyle={{width: 260}} ok={e => this.searchBtn('paymentRule')}>
                 <Select
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('paymentRule')}
                     onChange={e => this.handleSearchChangeCache(e, 'paymentRule')}
                 >
@@ -203,11 +209,12 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="增减规则" type="filter" fixed={true} ok={e => this.searchBtn('changeRule')}>
+            title: <FilterTable title="增减规则" type="filter" fixed={true} overlayStyle={{width:260}} ok={e => this.searchBtn('changeRule')}>
                 <Select
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('changeRule')}
                     onChange={e => this.handleSearchChangeCache(e, 'changeRule')}
                 >
@@ -224,9 +231,10 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="服务商截点日" type="filter" overlayStyle={{ width: 340 }} btnStyle={{ position: 'relative', left: '50px', top: '-2px' }} fixed={true} ok={e => this.searchBtn('supplierDeadline')}>
+            title: <FilterTable title="服务商截点日" type="filter" overlayStyle={{ width: 345 }} fixed={true} ok={e => this.searchBtn('supplierDeadline')}>
                 <RangePicker
                     style={{ width: 200 }}
+                    placeholder={['请选择','请选择']}
                     defaultValue={this.props.searchParamsCashe.toJS().supplierDeadline}
                     onChange={(date, dateString) => this.handleSearchChangeCache(date, 'supplierDeadline', dateString)}
                 />
@@ -238,9 +246,10 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="参保截点日" type="filter" overlayStyle={{ width: 340 }} btnStyle={{ position: 'relative', left: '50px', top: '-2px' }} fixed={true} ok={e => this.searchBtn('deadlineDay')}>
+            title: <FilterTable title="参保截点日" type="filter" overlayStyle={{ width: 345 }} fixed={true} ok={e => this.searchBtn('deadlineDay')}>
                 <RangePicker
                     style={{ width: 200 }}
+                    placeholder={['请选择','请选择']}
                     defaultValue={this.props.searchParamsCashe.toJS().deadlineDay}
                     onChange={(date, dateString) => this.handleSearchChangeCache(date, 'deadlineDay', dateString)}
                 />
@@ -252,9 +261,10 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="当地社保截点日" type="filter" overlayStyle={{ width: 340 }} btnStyle={{ position: 'relative', left: '50px', top: '-2px' }} fixed={true} ok={e => this.searchBtn('insuranceDeadline')}>
+            title: <FilterTable title="当地社保截点日" type="filter" overlayStyle={{ width: 345 }} fixed={true} ok={e => this.searchBtn('insuranceDeadline')}>
                 <RangePicker
                     style={{ width: 200 }}
+                    placeholder={['请选择','请选择']}
                     defaultValue={this.props.searchParamsCashe.toJS().insuranceDeadline}
                     onChange={(date, dateString) => this.handleSearchChangeCache(date, 'insuranceDeadline', dateString)}
                 />
@@ -266,9 +276,10 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="当地公积金截点日" type="filter" overlayStyle={{ width: 340 }} btnStyle={{ position: 'relative', left: '50px', top: '-2px' }} fixed={true} ok={e => this.searchBtn('housingFundDeadline')}>
+            title: <FilterTable title="当地公积金截点日" type="filter" overlayStyle={{ width: 345 }} fixed={true} ok={e => this.searchBtn('housingFundDeadline')}>
                 <RangePicker
                     style={{ width: 200 }}
+                    placeholder={['请选择','请选择']}
                     defaultValue={this.props.searchParamsCashe.toJS().housingFundDeadline}
                     onChange={(date, dateString) => this.handleSearchChangeCache(date, 'housingFundDeadline', dateString)}
                 />
@@ -285,6 +296,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('billType')}
                     onChange={e => this.handleSearchChangeCache(e, 'billType')}
                 >
@@ -304,6 +316,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('billMonth')}
                     onChange={e => this.handleSearchChangeCache(e, 'billMonth')}
                 >
@@ -319,9 +332,10 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="打款日" type="filter" overlayStyle={{ width: 340 }} btnStyle={{ position: 'relative', left: '50px', top: '-2px' }} fixed={true} ok={e => this.searchBtn('deductionDate')}>
+            title: <FilterTable title="打款日" type="filter" overlayStyle={{ width: 345 }} fixed={true} ok={e => this.searchBtn('deductionDate')}>
                 <RangePicker
                     style={{ width: 200 }}
+                    placeholder={['请选择','请选择']}
                     defaultValue={this.props.searchParamsCashe.toJS().deductionDate}
                     onChange={(data, dateString) => this.handleSearchChangeCache(date, 'deductionDate', dateString)}
                 />
@@ -338,6 +352,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('isConsistent')}
                     onChange={e => this.handleSearchChangeCache(e, 'isConsistent')}
                 >
@@ -357,6 +372,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('ensureChargeMethod')}
                     onChange={e => this.handleSearchChangeCache(e, 'ensureChargeMethod')}
                 >
@@ -378,6 +394,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('seriousChargeMethod')}
                     onChange={e => this.handleSearchChangeCache(e, 'seriousChargeMethod')}
                 >
@@ -394,8 +411,9 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="可开具证明" type="filter" fixed={true} ok={e => this.searchBtn('prove')}>
+            title: <FilterTable title="可开具证明" type="filter" fixed={true} overlayStyle={{width:260}} ok={e => this.searchBtn('prove')}>
                 <Input
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('prove')}
                     onChange={e => this.handleSearchChangeCache(e.target['value'], 'prove')}
                 />
@@ -409,8 +427,9 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="调基说明" type="filter" fixed={true} ok={e => this.searchBtn('adjustRemark')}>
+            title: <FilterTable title="调基说明" type="filter" fixed={true} overlayStyle={{width:260}} ok={e => this.searchBtn('adjustRemark')}>
                 <Input
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('adjustRemark')}
                     onChange={e => this.handleSearchChangeCache(e.target['value'], 'adjustRemark')}
                 />
@@ -424,8 +443,9 @@ class policypackageListApp extends Component {
             }
         },
         {
-            title: <FilterTable title="备注说明" type="filter" placement="left" fixed={true} ok={e => this.searchBtn('remark')}>
+            title: <FilterTable title="备注说明" type="filter" placement="left" fixed={true} overlayStyle={{width: 270}} ok={e => this.searchBtn('remark')}>
                 <Input
+                    style={{width:118}}
                     defaultValue={this.props.searchParamsCashe.get('remark')}
                     onChange={e => this.handleSearchChangeCache(e.target['value'], 'remark')}
                 />
@@ -444,6 +464,7 @@ class policypackageListApp extends Component {
                     key={new Date().getTime()}
                     placeholder="请选择"
                     allowClear
+                    style={{width:90}}
                     defaultValue={this.props.searchParamsCashe.get('isEnable')}
                     onChange={e => this.handleSearchChangeCache(e, 'isEnable')}
                 >

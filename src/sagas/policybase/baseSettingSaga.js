@@ -47,17 +47,25 @@ function* incrementAsync(obj){
 
         case BASICSETTING_LIST_GET_SAGA : {
 
+            const {
+                resolve,
+            } = params;
+            
             yield put(basicSettingListIsLoading({ isLoading: true }));
 
             let data = yield baseSettingRequestApi({
                 start: params.start,
                 length: params.length,
             });
-
+            
             if(data.status === 0) {
                 yield put(receiveBasicSettingList(Object.assign({},data.data,{
                     index: params.index,
                 })));
+            }
+
+            if(resolve){
+                resolve();
             }
 
             yield put(basicSettingListIsLoading({ isLoading: false }));
@@ -137,16 +145,8 @@ function* incrementAsync(obj){
             let data = yield updateSocialSetApi(dataObj);
 
             if(data.status === 0) {
-                
+
                 resolve();
-
-                console.log(index)
-
-                yield put(getBasicSettingList({
-                    start,
-                    length,
-                    index,
-                }));
             }
 
             yield put(smallTableModalLoading({smallTableModalLoading: false}));
@@ -181,7 +181,7 @@ function* incrementAsync(obj){
 
                 resolve();
 
-                message.error('新增成功');
+                message.success('新增成功');
 
                 yield put(getBasicSettingList({
                     start,
@@ -223,6 +223,7 @@ function* incrementAsync(obj){
                 start,
                 length,
                 index,
+                resolve,
             } = params;
 
             yield put(deleteSuccessLoading({deleteSuccessLoading: true}));
@@ -235,13 +236,16 @@ function* incrementAsync(obj){
                     index,
                     deleteSuccessVisible: false,
                 }));
+
+                message.success('删除成功');
                 
-                yield put(getBasicSettingList({
-                    index,
+                yield put(getBasicSettingList({ 
                     start,
                     length,
+                    resolve,
                 }));
             }
+            
 
             yield put(deleteSuccessLoading({deleteSuccessLoading: false}));
 

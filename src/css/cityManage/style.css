@@ -1,0 +1,28 @@
+.title{
+    padding-bottom: 10px;
+    border-bottom: solid 2px #00a854;
+}
+
+.title:after{
+    display: block;
+    content: ' ';
+    clear: both;
+}
+
+.title .left{
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.title .right{
+    float: right;
+}
+
+.title .addCity{
+    margin-right: 4px;
+}
+
+.autoComplete{
+    width: 120px;
+}

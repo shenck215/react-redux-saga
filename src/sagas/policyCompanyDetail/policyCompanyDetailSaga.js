@@ -15,6 +15,7 @@ import {
     addServiceCity, modifyServiceCity, addContact, modifyContact, deleteContact
 } from '../../api/policyCompanyDetail/policyCompanyDetailApi'
 import { message } from 'antd'
+import { unixToFormatedDataTime } from '../../page/policyCompany/utils'
 
 function processCompanyDetailResponseDataToProps(response) {
     if (response && response.data) {
@@ -26,12 +27,6 @@ function processCompanyDetailResponseDataToProps(response) {
             protocolFileUrl: response.data.attachment,
             remark: response.data.remark,
         }
-    }
-}
-
-function processGetCompanyDetailPropsToRequestParam(payload) {
-    return {
-
     }
 }
 
@@ -165,10 +160,11 @@ function processAddContactPropsToRequestParam(payload) {
     }
 }
 
+// log返回数据转为state
 function processResponseLogToProps(response) {
-    if (response && response.data) {
+    if (response && response.data && response.data.records) {
         return {
-            operationDataSource: response.data.records,
+            operationDataSource: response.data.records.map((item) => Object.assign(item, {createTime: unixToFormatedDataTime(item.createTime)})),
             pageSize: response.data.pageSize,
             operationCurrent: response.data.pageNow,
             operationTotal: response.data.rowCount

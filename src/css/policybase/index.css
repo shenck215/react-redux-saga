@@ -17,3 +17,18 @@
 :global(.ant-tabs):not(.ant-tabs-vertical) > :global(.ant-tabs-content){
 	min-height: 600px;
 }
+
+.marginBottom10{
+    margin-bottom: 10px;
+}
+.CheckboxGroup{
+    margin-bottom: 10px;
+}
+.CheckboxGroup :global(.ant-checkbox-group){
+    width: 84%;
+    display: inline-block;
+} 
+
+:global(.ant-popover) {
+    z-index: 50;
+}
